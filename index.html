@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sewa Alat Outdoor</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --forest: #1a2e1a;
+  --moss: #2d4a2d;
+  --leaf: #4a7c4a;
+  --sage: #7aab6a;
+  --mist: #c8dfc0;
+  --cream: #f5f0e8;
+  --sand: #e8dcc8;
+  --bark: #8b6344;
+  --stone: #5a5a52;
+  --white: #fafaf7;
+  --accent: #d4840a;
+  --danger: #c0392b;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--forest);
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed; top:0; width:100%; z-index:100;
+  background: rgba(26,46,26,0.95);
+  backdrop-filter: blur(12px);
+  padding: 0 5%;
+  display: flex; align-items:center; justify-content:space-between;
+  height: 64px;
+  border-bottom: 1px solid rgba(122,171,106,0.2);
+}
+.nav-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  color: var(--sage);
+  font-size: 1.6rem;
+  letter-spacing: 3px;
+}
+.nav-logo span { color: var(--accent); }
+.nav-links { display:flex; gap:28px; }
+.nav-links a {
+  color: var(--mist); text-decoration:none;
+  font-size: 0.85rem; font-weight:500; letter-spacing:1px;
+  text-transform: uppercase; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--sage); }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  background: var(--forest);
+  display: flex; align-items:center;
+  position: relative; overflow: hidden;
+  padding: 80px 5% 40px;
+}
+.hero-bg {
+  position: absolute; inset:0;
+  background:
+    radial-gradient(ellipse 60% 80% at 70% 50%, rgba(74,124,74,0.15) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 60% at 20% 80%, rgba(212,132,10,0.08) 0%, transparent 50%);
+}
+.hero-grid {
+  position: absolute; inset:0; opacity:0.04;
+  background-image:
+    linear-gradient(var(--sage) 1px, transparent 1px),
+    linear-gradient(90deg, var(--sage) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+.hero-content { position:relative; max-width:600px; }
+.hero-badge {
+  display: inline-flex; align-items:center; gap:8px;
+  background: rgba(122,171,106,0.12);
+  border: 1px solid rgba(122,171,106,0.3);
+  border-radius:100px; padding: 6px 16px;
+  color: var(--sage); font-size:0.78rem;
+  font-weight:500; letter-spacing:2px;
+  text-transform: uppercase; margin-bottom:24px;
+}
+.hero-badge::before {
+  content:''; width:6px; height:6px;
+  background: var(--sage); border-radius:50%;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%,100%{opacity:1;transform:scale(1)}
+  50%{opacity:0.5;transform:scale(1.5)}
+}
+h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3.5rem, 8vw, 6.5rem);
+  line-height:0.95; color: var(--white);
+  letter-spacing:2px; margin-bottom:24px;
+}
+h1 em { color: var(--sage); font-style:normal; }
+.hero-sub {
+  color: rgba(200,223,192,0.7);
+  font-size:1.05rem; line-height:1.7;
+  max-width:440px; margin-bottom:40px;
+  font-weight:300;
+}
+.hero-ctas { display:flex; gap:14px; flex-wrap:wrap; }
+.btn-primary {
+  display: inline-flex; align-items:center; gap:8px;
+  background: var(--sage);
+  color: var(--forest);
+  border:none; border-radius:4px;
+  padding: 14px 28px; font-size:0.9rem;
+  font-weight:700; letter-spacing:1px;
+  text-transform: uppercase; cursor:pointer;
+  transition: all 0.2s; text-decoration:none;
+  font-family: 'DM Sans', sans-serif;
+}
+.btn-primary:hover { background: var(--mist); transform:translateY(-2px); }
+.btn-outline {
+  display: inline-flex; align-items:center; gap:8px;
+  background: transparent;
+  border: 1.5px solid rgba(122,171,106,0.5);
+  color: var(--mist); border-radius:4px;
+  padding: 14px 28px; font-size:0.9rem;
+  font-weight:500; cursor:pointer;
+  transition: all 0.2s; text-decoration:none;
+  font-family: 'DM Sans', sans-serif;
+}
+.btn-outline:hover { border-color: var(--sage); color: var(--sage); }
+
+/* STATS BAR */
+.stats-bar {
+  background: var(--moss);
+  padding: 20px 5%;
+  display: flex; gap:0; overflow:hidden;
+}
+.stat-item {
+  flex:1; text-align:center;
+  border-right: 1px solid rgba(122,171,106,0.2);
+  padding: 12px 20px;
+}
+.stat-item:last-child { border-right:none; }
+.stat-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size:2rem; color: var(--sage);
+  letter-spacing:2px;
+}
+.stat-label { font-size:0.75rem; color: var(--mist); font-weight:300; letter-spacing:1px; }
+
+/* SECTION HEADERS */
+section { padding: 80px 5%; }
+.section-tag {
+  display: inline-block;
+  font-size:0.72rem; font-weight:700;
+  letter-spacing:3px; text-transform:uppercase;
+  color: var(--sage); margin-bottom:12px;
+}
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height:1; color: var(--forest);
+  margin-bottom:8px; letter-spacing:1px;
+}
+.section-title.light { color: var(--white); }
+.section-sub {
+  color: var(--stone); font-size:1rem;
+  font-weight:300; max-width:500px;
+  line-height:1.7;
+}
+
+/* CATALOG */
+#catalog { background: var(--white); }
+.catalog-header {
+  display:flex; align-items:flex-end;
+  justify-content:space-between; margin-bottom:40px;
+  flex-wrap:wrap; gap:20px;
+}
+.filter-tabs {
+  display:flex; gap:8px; flex-wrap:wrap;
+}
+.filter-tab {
+  padding: 8px 18px; border-radius:100px;
+  border: 1.5px solid var(--sand);
+  background: transparent; cursor:pointer;
+  font-size:0.82rem; font-weight:500;
+  color: var(--stone); transition: all 0.2s;
+  font-family: 'DM Sans', sans-serif;
+}
+.filter-tab.active, .filter-tab:hover {
+  background: var(--forest); color: var(--sage);
+  border-color: var(--forest);
+}
+.items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+.item-card {
+  background: var(--cream);
+  border: 1px solid var(--sand);
+  border-radius:8px; overflow:hidden;
+  transition: all 0.2s; cursor:pointer;
+}
+.item-card:hover { transform:translateY(-4px); box-shadow:0 12px 40px rgba(26,46,26,0.12); }
+.item-img {
+  height:140px; background: var(--moss);
+  display:flex; align-items:center; justify-content:center;
+  font-size:3rem; position:relative;
+}
+.item-stock-badge {
+  position:absolute; top:10px; right:10px;
+  padding: 3px 10px; border-radius:100px;
+  font-size:0.7rem; font-weight:600;
+  letter-spacing:0.5px;
+}
+.stock-ok { background: rgba(122,171,106,0.15); color: #4a7c4a; }
+.stock-low { background: rgba(212,132,10,0.15); color: var(--accent); }
+.stock-none { background: rgba(192,57,43,0.15); color: var(--danger); }
+.item-body { padding:14px; }
+.item-name { font-weight:600; font-size:0.95rem; margin-bottom:4px; }
+.item-cat {
+  font-size:0.72rem; color: var(--sage);
+  text-transform:uppercase; letter-spacing:1px;
+  font-weight:600; margin-bottom:10px;
+}
+.item-price {
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.4rem; color: var(--accent);
+  letter-spacing:1px;
+}
+.item-price-sub { font-size:0.72rem; color: var(--stone); font-family:'DM Sans',sans-serif; }
+.item-add {
+  width:100%; margin-top:12px;
+  padding:9px; background: var(--forest);
+  color: var(--sage); border:none; border-radius:4px;
+  font-size:0.82rem; font-weight:600;
+  cursor:pointer; transition: all 0.2s;
+  font-family:'DM Sans',sans-serif; letter-spacing:0.5px;
+}
+.item-add:hover:not(:disabled) { background: var(--moss); }
+.item-add:disabled { opacity:0.4; cursor:not-allowed; }
+
+/* BOOKING FORM */
+#booking { background: var(--forest); }
+.booking-layout {
+  display:grid; grid-template-columns:1fr 400px; gap:60px;
+  align-items:start;
+}
+.form-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(122,171,106,0.2);
+  border-radius:12px; padding:40px;
+}
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.form-group { margin-bottom:20px; }
+.form-label {
+  display:block; font-size:0.75rem;
+  font-weight:600; letter-spacing:2px;
+  text-transform:uppercase; color: var(--sage);
+  margin-bottom:8px;
+}
+.form-input {
+  width:100%; padding:12px 16px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(122,171,106,0.2);
+  border-radius:6px; color: var(--white);
+  font-size:0.95rem; font-family:'DM Sans',sans-serif;
+  transition: border-color 0.2s;
+}
+.form-input:focus { outline:none; border-color: var(--sage); }
+.form-input::placeholder { color: rgba(200,223,192,0.3); }
+.form-input option { background: var(--forest); }
+.student-toggle {
+  display:flex; align-items:center; gap:12px;
+  padding:14px 16px;
+  background: rgba(122,171,106,0.06);
+  border: 1px solid rgba(122,171,106,0.2);
+  border-radius:6px; cursor:pointer;
+  transition: all 0.2s;
+}
+.student-toggle input { display:none; }
+.toggle-indicator {
+  width:36px; height:20px;
+  background: rgba(255,255,255,0.1);
+  border-radius:100px; position:relative;
+  transition: background 0.2s; flex-shrink:0;
+}
+.toggle-indicator::after {
+  content:''; position:absolute;
+  top:3px; left:3px;
+  width:14px; height:14px;
+  background: white; border-radius:50%;
+  transition: transform 0.2s;
+}
+.student-toggle.active .toggle-indicator { background: var(--sage); }
+.student-toggle.active .toggle-indicator::after { transform:translateX(16px); }
+.toggle-text { font-size:0.88rem; color: var(--mist); }
+.toggle-text strong { color: var(--sage); }
+
+/* CART */
+.cart-panel {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(122,171,106,0.2);
+  border-radius:12px; padding:28px;
+  position:sticky; top:84px;
+}
+.cart-title {
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.5rem; color: var(--white);
+  letter-spacing:2px; margin-bottom:20px;
+  padding-bottom:16px;
+  border-bottom:1px solid rgba(122,171,106,0.2);
+}
+.cart-empty {
+  text-align:center; padding:40px 0;
+  color: rgba(200,223,192,0.4);
+}
+.cart-empty-icon { font-size:2.5rem; margin-bottom:8px; }
+.cart-empty-text { font-size:0.85rem; }
+.cart-item {
+  display:flex; align-items:center;
+  gap:12px; padding:10px 0;
+  border-bottom:1px solid rgba(122,171,106,0.1);
+}
+.cart-item-icon { font-size:1.4rem; }
+.cart-item-info { flex:1; }
+.cart-item-name { font-size:0.85rem; font-weight:500; color: var(--mist); }
+.cart-item-price { font-size:0.75rem; color: var(--sage); }
+.cart-qty {
+  display:flex; align-items:center; gap:6px;
+}
+.qty-btn {
+  width:24px; height:24px;
+  background: rgba(122,171,106,0.15);
+  border: 1px solid rgba(122,171,106,0.2);
+  border-radius:4px; color: var(--sage);
+  cursor:pointer; font-size:1rem;
+  display:flex; align-items:center; justify-content:center;
+  transition: background 0.15s;
+}
+.qty-btn:hover { background: rgba(122,171,106,0.3); }
+.qty-val { font-size:0.9rem; font-weight:600; color: var(--white); min-width:20px; text-align:center; }
+.cart-summary {
+  margin-top:20px; padding-top:16px;
+  border-top:1px solid rgba(122,171,106,0.2);
+}
+.summary-row {
+  display:flex; justify-content:space-between;
+  font-size:0.85rem; color: rgba(200,223,192,0.7);
+  margin-bottom:8px;
+}
+.summary-row.total {
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.3rem; color: var(--white); letter-spacing:1px;
+  margin-top:12px; padding-top:12px;
+  border-top:1px solid rgba(122,171,106,0.2);
+}
+.summary-row.dp { color: var(--accent); font-weight:600; }
+.discount-badge {
+  background: rgba(122,171,106,0.1);
+  border:1px solid rgba(122,171,106,0.2);
+  border-radius:4px; padding:6px 12px;
+  font-size:0.78rem; color: var(--sage);
+  margin-bottom:12px; display:none;
+}
+
+/* MODAL */
+.modal-overlay {
+  display:none; position:fixed; inset:0;
+  background: rgba(0,0,0,0.8); z-index:1000;
+  align-items:center; justify-content:center;
+  padding:20px;
+}
+.modal-overlay.open { display:flex; }
+.modal {
+  background: var(--cream);
+  border-radius:12px; padding:40px;
+  max-width:480px; width:100%;
+  max-height:90vh; overflow-y:auto;
+}
+.modal-icon { font-size:3rem; text-align:center; margin-bottom:16px; }
+.modal-title {
+  font-family:'Bebas Neue',sans-serif;
+  font-size:2rem; color: var(--forest);
+  letter-spacing:2px; text-align:center;
+  margin-bottom:8px;
+}
+.modal-body { font-size:0.9rem; color: var(--stone); line-height:1.7; }
+.order-summary {
+  background: var(--white);
+  border:1px solid var(--sand);
+  border-radius:8px; padding:20px;
+  margin:20px 0; font-size:0.85rem;
+}
+.order-summary-row {
+  display:flex; justify-content:space-between;
+  padding:6px 0; border-bottom:1px solid var(--sand);
+  color: var(--stone);
+}
+.order-summary-row:last-child { border-bottom:none; }
+.order-summary-row.highlight { color: var(--forest); font-weight:600; }
+.wa-msg {
+  background: #dcf8c6;
+  border-radius:8px; padding:16px;
+  font-size:0.78rem; line-height:1.6;
+  color: #333; white-space:pre-wrap;
+  font-family:monospace; margin:16px 0;
+  max-height:200px; overflow-y:auto;
+}
+.btn-wa {
+  display:flex; align-items:center; justify-content:center;
+  gap:10px; width:100%;
+  background: #25D366; color: white;
+  border:none; border-radius:8px;
+  padding:16px; font-size:1rem;
+  font-weight:700; cursor:pointer;
+  text-decoration:none;
+  font-family:'DM Sans',sans-serif;
+  transition: background 0.2s;
+}
+.btn-wa:hover { background: #128C7E; }
+
+/* HOW IT WORKS */
+#cara-sewa { background: var(--white); }
+.steps-grid {
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:24px; margin-top:48px;
+}
+.step-card {
+  text-align:center; padding:32px 20px;
+  border:1px solid var(--sand);
+  border-radius:8px; position:relative;
+}
+.step-num {
+  font-family:'Bebas Neue',sans-serif;
+  font-size:4rem; color: rgba(74,124,74,0.12);
+  position:absolute; top:10px; right:16px;
+  line-height:1;
+}
+.step-icon { font-size:2.2rem; margin-bottom:16px; }
+.step-title { font-weight:700; margin-bottom:8px; }
+.step-desc { font-size:0.85rem; color: var(--stone); line-height:1.6; }
+
+/* CONTACT */
+#kontak { background: var(--moss); }
+.contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; }
+.contact-info { color: var(--mist); }
+.contact-item {
+  display:flex; align-items:center; gap:16px;
+  padding:16px 0; border-bottom:1px solid rgba(122,171,106,0.2);
+}
+.contact-item:last-child { border-bottom:none; }
+.contact-icon { font-size:1.5rem; width:40px; text-align:center; }
+.contact-detail small { font-size:0.72rem; text-transform:uppercase; letter-spacing:1px; color: var(--sage); }
+.contact-detail p { font-size:1rem; font-weight:500; color: var(--white); margin-top:2px; }
+
+/* LOADING */
+.loading { display:flex; align-items:center; justify-content:center; gap:10px; padding:40px; color: var(--stone); }
+.spinner { width:20px; height:20px; border:2px solid var(--sand); border-top-color: var(--sage); border-radius:50%; animation:spin 0.8s linear infinite; }
+@keyframes spin { to{transform:rotate(360deg)} }
+
+/* TOAST */
+.toast {
+  position:fixed; bottom:24px; right:24px;
+  background: var(--forest); color: var(--sage);
+  padding:12px 20px; border-radius:8px;
+  font-size:0.85rem; font-weight:500;
+  border:1px solid rgba(122,171,106,0.3);
+  transform:translateY(80px); opacity:0;
+  transition: all 0.3s; z-index:9999;
+}
+.toast.show { transform:translateY(0); opacity:1; }
+
+@media(max-width:768px){
+  .booking-layout { grid-template-columns:1fr; }
+  .form-row { grid-template-columns:1fr; }
+  .contact-grid { grid-template-columns:1fr; }
+  .stats-bar { flex-wrap:wrap; }
+  .stat-item { flex:1 1 50%; }
+  .cart-panel { position:static; }
+  nav .nav-links { display:none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">OUTDOOR<span>.</span>RENTAL</div>
+  <div class="nav-links">
+    <a href="#catalog">Katalog</a>
+    <a href="#booking">Booking</a>
+    <a href="#cara-sewa">Cara Sewa</a>
+    <a href="#kontak">Kontak</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge">⛺ Alat Outdoor Berkualitas</div>
+    <h1>PETUALANGAN<br><em>TANPA</em><br>BATAS</h1>
+    <p class="hero-sub">Sewa alat outdoor lengkap — tenda, carrier, sleeping bag, kompor, dan lebih banyak lagi. Harga terjangkau, kondisi terjaga.</p>
+    <div class="hero-ctas">
+      <a href="#catalog" class="btn-primary">🎒 Lihat Katalog</a>
+      <a href="#booking" class="btn-outline">📅 Booking Sekarang</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item"><div class="stat-num" id="statItems">10+</div><div class="stat-label">Jenis Alat</div></div>
+  <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">Kondisi Terjaga</div></div>
+  <div class="stat-item"><div class="stat-num">🎓</div><div class="stat-label">Diskon Mahasiswa 10%</div></div>
+  <div class="stat-item"><div class="stat-num">⚡</div><div class="stat-label">Respon Cepat</div></div>
+</div>
+
+<!-- CATALOG -->
+<section id="catalog">
+  <div class="catalog-header">
+    <div>
+      <div class="section-tag">Katalog</div>
+      <div class="section-title">SEMUA ALAT</div>
+      <div class="section-sub">Stok real-time, langsung dari sistem kami</div>
+    </div>
+    <div class="filter-tabs" id="filterTabs">
+      <button class="filter-tab active" data-cat="semua">Semua</button>
+    </div>
+  </div>
+  <div class="items-grid" id="itemsGrid">
+    <div class="loading"><div class="spinner"></div> Memuat katalog...</div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking">
+  <div class="booking-layout">
+    <div>
+      <div class="section-tag">Booking</div>
+      <div class="section-title light">PESAN SEKARANG</div>
+      <div class="section-sub" style="color:rgba(200,223,192,0.6);margin-bottom:36px;">Isi form di bawah, kami akan konfirmasi via WhatsApp.</div>
+
+      <div class="form-card">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Nama Lengkap *</label>
+            <input type="text" class="form-input" id="clientName" placeholder="Nama kamu">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Nomor WhatsApp *</label>
+            <input type="tel" class="form-input" id="clientWA" placeholder="08xxxxxxxxxx">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Tanggal Ambil *</label>
+            <input type="date" class="form-input" id="startDate">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Tanggal Kembali *</label>
+            <input type="date" class="form-input" id="endDate">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Catatan (opsional)</label>
+          <input type="text" class="form-input" id="orderNotes" placeholder="Titik ambil, catatan khusus, dll">
+        </div>
+        <div class="form-group">
+          <label class="student-toggle" id="studentToggle">
+            <input type="checkbox" id="isStudent">
+            <div class="toggle-indicator"></div>
+            <div class="toggle-text">Saya <strong>Mahasiswa</strong> (dapat diskon 10%)</div>
+          </label>
+        </div>
+        <button class="btn-primary" id="submitOrder" style="width:100%;justify-content:center;" onclick="submitOrder()">
+          🚀 Kirim Booking
+        </button>
+      </div>
+    </div>
+
+    <!-- CART -->
+    <div class="cart-panel">
+      <div class="cart-title">🛒 KERANJANG</div>
+      <div id="cartContent">
+        <div class="cart-empty">
+          <div class="cart-empty-icon">🎒</div>
+          <div class="cart-empty-text">Belum ada alat dipilih.<br>Pilih dari katalog di atas!</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CARA SEWA -->
+<section id="cara-sewa">
+  <div class="section-tag">Proses</div>
+  <div class="section-title">CARA SEWA</div>
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <div class="step-icon">🔍</div>
+      <div class="step-title">Pilih Alat</div>
+      <div class="step-desc">Browse katalog, pilih alat yang kamu butuhkan, cek ketersediaan real-time.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <div class="step-icon">📝</div>
+      <div class="step-title">Isi Form Booking</div>
+      <div class="step-desc">Isi nama, nomor WA, dan tanggal sewa. Mahasiswa dapat diskon 10%!</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">3</div>
+      <div class="step-icon">💬</div>
+      <div class="step-title">Konfirmasi WA</div>
+      <div class="step-desc">Kami akan kirim rincian ke WA kamu. Bayar DP 30% untuk konfirmasi booking.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">4</div>
+      <div class="step-icon">🤝</div>
+      <div class="step-title">Ambil & Jaminan</div>
+      <div class="step-desc">Ambil alat di lokasi, lunasi 70%, dan titipkan KTP/KK/Ijazah sebagai jaminan.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">5</div>
+      <div class="step-icon">⛺</div>
+      <div class="step-title">Petualangan!</div>
+      <div class="step-desc">Nikmati petualangan kamu dengan alat berkualitas kami.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">6</div>
+      <div class="step-icon">🔄</div>
+      <div class="step-title">Kembalikan</div>
+      <div class="step-desc">Kembalikan alat tepat waktu, kami kembalikan jaminan kamu.</div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAK -->
+<section id="kontak">
+  <div class="contact-grid">
+    <div>
+      <div class="section-tag">Hubungi Kami</div>
+      <div class="section-title light">ADA PERTANYAAN?</div>
+      <div class="section-sub" style="color:rgba(200,223,192,0.6);margin-bottom:32px;">
+        Jangan ragu kontak kami. Kami siap bantu kamu planning trip outdoor!
+      </div>
+      <a id="waContactBtn" href="#" target="_blank" class="btn-primary" style="display:inline-flex;">
+        💬 Chat via WhatsApp
+      </a>
+    </div>
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="contact-icon">📱</div>
+        <div class="contact-detail">
+          <small>WhatsApp</small>
+          <p id="displayWA">Loading...</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📸</div>
+        <div class="contact-detail">
+          <small>Instagram</small>
+          <p id="displayIG">Loading...</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">⏰</div>
+        <div class="contact-detail">
+          <small>Jam Operasional</small>
+          <p>Setiap Hari, 08.00 – 21.00</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUCCESS MODAL -->
+<div class="modal-overlay" id="successModal">
+  <div class="modal">
+    <div class="modal-icon">🎉</div>
+    <div class="modal-title">BOOKING DIKIRIM!</div>
+    <div class="modal-body">
+      <p style="text-align:center;margin-bottom:16px;color:#666">Order kamu sudah kami terima. Klik tombol di bawah untuk lanjut konfirmasi via WhatsApp.</p>
+      <div class="order-summary" id="modalSummary"></div>
+      <p style="font-size:0.82rem;color:#888;margin-bottom:8px">Preview pesan WA:</p>
+      <div class="wa-msg" id="waPreview"></div>
+      <a class="btn-wa" id="waConfirmBtn" href="#" target="_blank">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Lanjut Konfirmasi via WhatsApp
+      </a>
+      <button onclick="closeModal()" style="width:100%;margin-top:10px;padding:12px;background:transparent;border:1.5px solid #ddd;border-radius:8px;cursor:pointer;font-family:'DM Sans',sans-serif;color:#666;font-size:0.85rem;">
+        Tutup
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ============================================================
+// KONFIGURASI - GANTI URL INI DENGAN URL APPS SCRIPT KAMU
+// ============================================================
+const API_URL = 'GANTI_DENGAN_URL_APPS_SCRIPT_KAMU';
+const WA_NUMBER = '+6281383113200'; // Ganti dengan nomor WA kamu (tanpa +)
+
+// ============================================================
+// STATE
+// ============================================================
+let allItems = [];
+let cart = {};
+let activeFilter = 'semua';
+let startDate = '', endDate = '';
+let isStudent = false;
+let orderResult = null;
+
+// ============================================================
+// INIT
+// ============================================================
+document.addEventListener('DOMContentLoaded', () => {
+  setMinDates();
+  loadItems();
+  setupStudentToggle();
+  setupDateListeners();
+  document.getElementById('displayWA').textContent = formatWADisplay(WA_NUMBER);
+  document.getElementById('waContactBtn').href = `https://wa.me/${WA_NUMBER}`;
+});
+
+function setMinDates() {
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('startDate').min = today;
+  document.getElementById('endDate').min = today;
+}
+
+function setupDateListeners() {
+  document.getElementById('startDate').addEventListener('change', (e) => {
+    startDate = e.target.value;
+    document.getElementById('endDate').min = startDate;
+    if (endDate && endDate <= startDate) {
+      endDate = '';
+      document.getElementById('endDate').value = '';
+    }
+    updateCart();
+  });
+  document.getElementById('endDate').addEventListener('change', (e) => {
+    endDate = e.target.value;
+    updateCart();
+  });
+}
+
+function setupStudentToggle() {
+  const toggle = document.getElementById('studentToggle');
+  const checkbox = document.getElementById('isStudent');
+  toggle.addEventListener('click', () => {
+    isStudent = !isStudent;
+    checkbox.checked = isStudent;
+    toggle.classList.toggle('active', isStudent);
+    updateCart();
+  });
+}
+
+// ============================================================
+// LOAD ITEMS
+// ============================================================
+async function loadItems() {
+  try {
+    const res = await fetch(`${API_URL}?action=getItems`);
+    allItems = await res.json();
+    renderCatalog();
+    buildFilters();
+    document.getElementById('statItems').textContent = allItems.length + '+';
+  } catch(e) {
+    document.getElementById('itemsGrid').innerHTML = 
+      `<div style="color:#666;padding:40px;text-align:center">
+        ⚠️ Gagal memuat katalog. Pastikan API sudah dikonfigurasi.<br>
+        <small style="font-size:0.75rem;margin-top:8px;display:block">Error: ${e.message}</small>
+      </div>`;
+  }
+}
+
+function buildFilters() {
+  const cats = ['Semua', ...new Set(allItems.map(i => i['Kategori']))];
+  const tabs = document.getElementById('filterTabs');
+  tabs.innerHTML = cats.map(c => 
+    `<button class="filter-tab ${c==='Semua'?'active':''}" data-cat="${c.toLowerCase()}" onclick="filterCat('${c.toLowerCase()}')">${c}</button>`
+  ).join('');
+}
+
+function filterCat(cat) {
+  activeFilter = cat;
+  document.querySelectorAll('.filter-tab').forEach(t => {
+    t.classList.toggle('active', t.dataset.cat === cat);
+  });
+  renderCatalog();
+}
+
+function renderCatalog() {
+  const filtered = activeFilter === 'semua' ? allItems :
+    allItems.filter(i => i['Kategori'].toLowerCase() === activeFilter);
+  
+  const emojiMap = {
+    'Tenda':'⛺', 'Tidur':'🛌', 'Tas':'🎒', 'Masak':'🍳',
+    'Lampu':'🔦', 'Aksesoris':'🧰', 'Pakaian':'👕', 'Air':'💧'
+  };
+
+  document.getElementById('itemsGrid').innerHTML = filtered.map(item => {
+    const avail = item['Stok Tersedia'] || 0;
+    const stockClass = avail <= 0 ? 'stock-none' : avail <= 1 ? 'stock-low' : 'stock-ok';
+    const stockText = avail <= 0 ? 'Habis' : avail <= 1 ? 'Hampir habis' : `${avail} tersedia`;
+    const emoji = emojiMap[item['Kategori']] || '🏕️';
+    const cartQty = cart[item['ID']]?.quantity || 0;
+    
+    return `<div class="item-card" id="card-${item['ID']}">
+      <div class="item-img">
+        ${emoji}
+        <span class="item-stock-badge ${stockClass}">${stockText}</span>
+      </div>
+      <div class="item-body">
+        <div class="item-cat">${item['Kategori']}</div>
+        <div class="item-name">${item['Nama Barang']}</div>
+        <div class="item-price">${formatRp(item['Harga/Hari'])} <span class="item-price-sub">/hari</span></div>
+        ${item['Catatan'] ? `<div style="font-size:0.72rem;color:#888;margin-top:4px">${item['Catatan']}</div>` : ''}
+        <button class="item-add" onclick="addToCart('${item['ID']}')" ${avail<=0?'disabled':''}>
+          ${avail<=0 ? '❌ Tidak Tersedia' : cartQty>0 ? `✓ Di Keranjang (${cartQty})` : '+ Tambah ke Keranjang'}
+        </button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ============================================================
+// CART
+// ============================================================
+function addToCart(itemId) {
+  const item = allItems.find(i => i['ID'] === itemId);
+  if (!item) return;
+  
+  if (cart[itemId]) {
+    const maxAvail = item['Stok Tersedia'] || 0;
+    if (cart[itemId].quantity >= maxAvail) {
+      showToast('Stok tidak mencukupi!');
+      return;
+    }
+    cart[itemId].quantity++;
+  } else {
+    cart[itemId] = {
+      itemId: item['ID'],
+      itemName: item['Nama Barang'],
+      pricePerDay: item['Harga/Hari'],
+      quantity: 1
+    };
+  }
+  updateCart();
+  renderCatalog();
+  showToast(`${item['Nama Barang']} ditambahkan!`);
+  document.getElementById('booking').scrollIntoView({ behavior:'smooth', block:'start' });
+}
+
+function changeQty(itemId, delta) {
+  if (!cart[itemId]) return;
+  cart[itemId].quantity += delta;
+  if (cart[itemId].quantity <= 0) {
+    delete cart[itemId];
+  }
+  updateCart();
+  renderCatalog();
+}
+
+function updateCart() {
+  const days = calcDays();
+  const items = Object.values(cart);
+  
+  if (items.length === 0) {
+    document.getElementById('cartContent').innerHTML = `
+      <div class="cart-empty">
+        <div class="cart-empty-icon">🎒</div>
+        <div class="cart-empty-text">Belum ada alat dipilih.<br>Pilih dari katalog di atas!</div>
+      </div>`;
+    return;
+  }
+  
+  let subtotal = 0;
+  items.forEach(i => subtotal += i.pricePerDay * i.quantity * (days || 1));
+  const discount = isStudent ? subtotal * 0.1 : 0;
+  const total = subtotal - discount;
+  
+  document.getElementById('cartContent').innerHTML = `
+    ${items.map(i => `
+      <div class="cart-item">
+        <div class="cart-item-icon">🏕️</div>
+        <div class="cart-item-info">
+          <div class="cart-item-name">${i.itemName}</div>
+          <div class="cart-item-price">${formatRp(i.pricePerDay)}/hari × ${i.quantity}</div>
+        </div>
+        <div class="cart-qty">
+          <button class="qty-btn" onclick="changeQty('${i.itemId}',-1)">−</button>
+          <span class="qty-val">${i.quantity}</span>
+          <button class="qty-btn" onclick="changeQty('${i.itemId}',1)">+</button>
+        </div>
+      </div>`).join('')}
+    <div class="cart-summary">
+      ${days ? `<div class="summary-row"><span>Durasi</span><span>${days} hari</span></div>` : ''}
+      <div class="summary-row"><span>Subtotal</span><span>${formatRp(subtotal)}</span></div>
+      ${isStudent ? `<div class="summary-row" style="color:var(--sage)"><span>Diskon Mahasiswa 10%</span><span>−${formatRp(discount)}</span></div>` : ''}
+      <div class="summary-row total"><span>TOTAL</span><span>${formatRp(total)}</span></div>
+      ${days ? `<div class="summary-row dp"><span>DP 30%</span><span>${formatRp(Math.ceil(total*0.3))}</span></div>` : ''}
+    </div>`;
+}
+
+function calcDays() {
+  if (!startDate || !endDate) return 0;
+  const diff = new Date(endDate) - new Date(startDate);
+  return Math.ceil(diff / (1000 * 60 * 60 * 24));
+}
+
+// ============================================================
+// SUBMIT ORDER
+// ============================================================
+async function submitOrder() {
+  const name = document.getElementById('clientName').value.trim();
+  const wa = document.getElementById('clientWA').value.trim();
+  const notes = document.getElementById('orderNotes').value.trim();
+  
+  if (!name) { showToast('Nama harus diisi!'); return; }
+  if (!wa) { showToast('Nomor WA harus diisi!'); return; }
+  if (!startDate) { showToast('Tanggal ambil harus diisi!'); return; }
+  if (!endDate) { showToast('Tanggal kembali harus diisi!'); return; }
+  if (Object.keys(cart).length === 0) { showToast('Pilih minimal 1 alat!'); return; }
+
+  const btn = document.getElementById('submitOrder');
+  btn.textContent = '⏳ Mengirim...';
+  btn.disabled = true;
+
+  const payload = {
+    action: 'createOrder',
+    clientName: name,
+    whatsapp: wa,
+    startDate, endDate,
+    items: Object.values(cart),
+    isStudent,
+    notes
+  };
+
+  try {
+    const res = await fetch(API_URL, {
+      method: 'POST',
+      body: JSON.stringify(payload)
+    });
+    const data = await res.json();
+    
+    if (data.success) {
+      orderResult = data;
+      showSuccessModal(data);
+      cart = {};
+      updateCart();
+      renderCatalog();
+    } else {
+      showToast('Error: ' + (data.error || 'Gagal mengirim order'));
+    }
+  } catch(e) {
+    showToast('Gagal terhubung ke server. Coba lagi!');
+  } finally {
+    btn.textContent = '🚀 Kirim Booking';
+    btn.disabled = false;
+  }
+}
+
+function showSuccessModal(data) {
+  const s = data.summary;
+  document.getElementById('modalSummary').innerHTML = `
+    <div class="order-summary-row"><span>Order ID</span><strong>${s.orderId}</strong></div>
+    <div class="order-summary-row"><span>Durasi</span><span>${s.days} hari</span></div>
+    ${s.discount > 0 ? `<div class="order-summary-row"><span>Diskon Mahasiswa</span><span>−${formatRp(s.discount)}</span></div>` : ''}
+    <div class="order-summary-row highlight"><span>TOTAL</span><span>${formatRp(s.total)}</span></div>
+    <div class="order-summary-row" style="color:var(--accent)"><span>DP 30% (sekarang)</span><span><strong>${formatRp(s.dp30)}</strong></span></div>
+    <div class="order-summary-row"><span>Pelunasan 70% (saat ambil)</span><span>${formatRp(s.pelunasan70)}</span></div>`;
+  
+  document.getElementById('waPreview').textContent = data.waMessage;
+  
+  const waMsg = encodeURIComponent(data.waMessage);
+  document.getElementById('waConfirmBtn').href = `https://wa.me/${WA_NUMBER}?text=${waMsg}`;
+  
+  document.getElementById('successModal').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('successModal').classList.remove('open');
+}
+
+// ============================================================
+// HELPERS
+// ============================================================
+function formatRp(num) {
+  return 'Rp ' + Math.round(num||0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+}
+function formatWADisplay(num) {
+  return '+' + num.replace(/(\d{2})(\d{3})(\d{4})(\d+)/, '$1 $2-$3-$4');
+}
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// Update contact dari settings
+async function loadSettings() {
+  try {
+    const res = await fetch(`${API_URL}?action=getItems`);
+  } catch(e) {}
+}
+</script>
+</body>
+</html>
