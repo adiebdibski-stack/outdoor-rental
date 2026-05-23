@@ -3,61 +3,84 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sewa Alat Outdoor</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet">
+<title>Rooster Outdoor Rental</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --forest: #1a2e1a;
-  --moss: #2d4a2d;
-  --leaf: #4a7c4a;
-  --sage: #7aab6a;
-  --mist: #c8dfc0;
-  --cream: #f5f0e8;
-  --sand: #e8dcc8;
-  --stone: #5a5a52;
-  --white: #fafaf7;
-  --accent: #d4840a;
-  --danger: #c0392b;
+  --forest: #1e2b1e;
+  --dark:   #111714;
+  --panel:  #192119;
+  --teal:   #4abeb2;
+  --teal2:  #4ee4c0;
+  --teal-dim: rgba(74,190,178,0.12);
+  --teal-border: rgba(74,190,178,0.22);
+  --mist:   #f1fae0;
+  --cream:  #f5faf7;
+  --sand:   #ddeee6;
+  --stone:  #5a6b62;
+  --white:  #ffffff;
+  --blue:   #2563eb;
+  --blue2:  #3b82f6;
+  --blue-dark: #1d4ed8;
+  --red:    #dc2626;
+  --red2:   #ef4444;
+  --accent: #4abeb2;
+  --danger: #dc2626;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--forest);overflow-x:hidden}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--cream);color:var(--forest);overflow-x:hidden}
 
 /* NAV */
 nav{
   position:fixed;top:0;width:100%;z-index:200;
-  background:rgba(26,46,26,0.97);backdrop-filter:blur(12px);
+  background:rgba(17,23,20,0.97);backdrop-filter:blur(12px);
   padding:0 5%;display:flex;align-items:center;justify-content:space-between;
-  height:60px;border-bottom:1px solid rgba(122,171,106,0.2);
+  height:60px;border-bottom:1px solid rgba(74,190,178,0.18);
 }
-.nav-logo{font-family:'Bebas Neue',sans-serif;color:var(--sage);font-size:1.5rem;letter-spacing:3px}
-.nav-logo span{color:var(--accent)}
+.nav-logo{font-family:'Bebas Neue',sans-serif;color:var(--teal);font-size:1.5rem;letter-spacing:3px}
+.nav-logo span{color:var(--teal2)}
 .nav-links{display:flex;gap:24px}
-.nav-links a{color:rgba(200,223,192,0.8);text-decoration:none;font-size:0.8rem;font-weight:500;letter-spacing:1px;text-transform:uppercase;transition:color 0.2s}
-.nav-links a:hover{color:var(--sage)}
+.nav-links a{color:rgba(241,250,224,0.9);text-decoration:none;font-size:0.8rem;font-weight:500;letter-spacing:1px;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover{color:var(--teal)}
 
 /* HERO */
 .hero{
-  background:var(--forest);padding:96px 5% 44px;
-  display:flex;align-items:center;justify-content:space-between;
-  gap:40px;flex-wrap:wrap;
-  border-bottom:2px solid rgba(122,171,106,0.12);
+  background:var(--dark);padding:0;
+  display:grid;grid-template-columns:1fr 1fr;
+  border-bottom:2px solid rgba(74,190,178,0.1);
+  position:relative;overflow:hidden;
+  min-height:340px;
+}
+.hero-left{
+  padding:96px 5% 44px;
+  display:flex;align-items:center;
+  position:relative;z-index:2;
+}
+.hero-left::after{
+  content:'';position:absolute;
+  top:0;right:-80px;bottom:0;width:160px;
+  background:linear-gradient(to right,var(--dark),transparent);
+  z-index:3;pointer-events:none;
+}
+.hero-right{
   position:relative;overflow:hidden;
 }
-.hero::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse 60% 80% at 70% 50%,rgba(74,124,74,0.12) 0%,transparent 60%);
-  pointer-events:none;
+.hero-right img{
+  width:100%;height:100%;object-fit:cover;object-position:center;
+  display:block;
+  mask-image:linear-gradient(to left,rgba(0,0,0,1) 40%,transparent 100%);
+  -webkit-mask-image:linear-gradient(to left,rgba(0,0,0,1) 40%,transparent 100%);
 }
-.hero-text{position:relative}
+.hero-text{position:relative;z-index:2;max-width:520px;}
 .hero-text h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.8rem,6vw,4.5rem);line-height:0.95;color:var(--white);letter-spacing:2px}
-.hero-text h1 em{color:var(--sage);font-style:normal}
-.hero-text p{color:rgba(200,223,192,0.65);font-size:0.95rem;margin-top:12px;font-weight:300;max-width:400px;line-height:1.6}
+.hero-text h1 em{color:var(--teal);font-style:normal}
+.hero-text p{color:rgba(241,250,224,0.82);font-size:0.95rem;margin-top:12px;font-weight:300;max-width:400px;line-height:1.6}
 .hero-badges{display:flex;gap:8px;margin-top:18px;flex-wrap:wrap}
 .hbadge{
-  background:rgba(122,171,106,0.1);border:1px solid rgba(122,171,106,0.22);
+  background:rgba(74,190,178,0.08);border:1px solid rgba(74,190,178,0.2);
   border-radius:100px;padding:5px 14px;font-size:0.73rem;
-  color:var(--mist);font-weight:500;letter-spacing:0.5px;
+  color:var(--teal);font-weight:500;letter-spacing:0.5px;
 }
 
 /* MAIN */
@@ -65,26 +88,26 @@ nav{
 
 /* DATE BAR */
 .date-bar{
-  background:var(--forest);border-radius:12px;padding:18px 22px;
+  background:var(--dark);border-radius:12px;padding:18px 22px;
   display:flex;align-items:center;gap:16px;margin-bottom:22px;
-  flex-wrap:wrap;border:1px solid rgba(122,171,106,0.2);
+  flex-wrap:wrap;border:1px solid var(--teal-border);
 }
-.date-bar-title{font-family:'Bebas Neue',sans-serif;font-size:0.95rem;color:var(--sage);letter-spacing:2px;white-space:nowrap}
+.date-bar-title{font-family:'Bebas Neue',sans-serif;font-size:0.95rem;color:var(--teal);letter-spacing:2px;white-space:nowrap}
 .date-field{display:flex;align-items:center;gap:10px;flex:1;min-width:170px}
-.date-lbl{font-size:0.68rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(200,223,192,0.45);white-space:nowrap}
+.date-lbl{font-size:0.68rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(74,190,178,0.85);white-space:nowrap}
 .date-inp{
   flex:1;padding:8px 12px;
-  background:rgba(255,255,255,0.07);border:1px solid rgba(122,171,106,0.22);
+  background:rgba(255,255,255,0.06);border:1px solid var(--teal-border);
   border-radius:7px;color:var(--white);font-size:0.88rem;
-  font-family:'DM Sans',sans-serif;transition:border-color 0.2s;
+  font-family:'Plus Jakarta Sans',sans-serif;transition:border-color 0.2s;
 }
-.date-inp:focus{outline:none;border-color:var(--sage)}
+.date-inp:focus{outline:none;border-color:var(--teal)}
 .date-inp::-webkit-calendar-picker-indicator{filter:invert(1) opacity(0.45)}
-.date-arrow{color:rgba(200,223,192,0.3);font-size:1rem}
+.date-arrow{color:rgba(255,255,255,0.5);font-size:1rem}
 .date-dur{
-  background:rgba(122,171,106,0.1);border:1px solid rgba(122,171,106,0.18);
+  background:var(--teal-dim);border:1px solid var(--teal-border);
   border-radius:7px;padding:8px 14px;white-space:nowrap;
-  font-size:0.82rem;font-weight:600;color:var(--sage);min-width:96px;text-align:center;
+  font-size:0.82rem;font-weight:600;color:var(--teal);min-width:96px;text-align:center;
 }
 
 /* TWO-COL */
@@ -92,15 +115,15 @@ nav{
 
 /* CATALOG */
 .section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px}
-.section-lbl{font-family:'Bebas Neue',sans-serif;font-size:1.35rem;letter-spacing:2px;color:var(--forest)}
+.section-lbl{font-family:'Bebas Neue',sans-serif;font-size:1.35rem;letter-spacing:2px;color:#0f1f15}
 .filter-tabs{display:flex;gap:6px;flex-wrap:wrap}
 .filter-tab{
   padding:5px 14px;border-radius:100px;
   border:1.5px solid var(--sand);background:transparent;
-  cursor:pointer;font-size:0.76rem;font-weight:500;
-  color:var(--stone);transition:all 0.15s;font-family:'DM Sans',sans-serif;
+  cursor:pointer;font-size:0.76rem;font-weight:600;
+  color:#374840;transition:all 0.15s;font-family:'Plus Jakarta Sans',sans-serif;
 }
-.filter-tab.active,.filter-tab:hover{background:var(--forest);color:var(--sage);border-color:var(--forest)}
+.filter-tab.active,.filter-tab:hover{background:var(--dark);color:var(--teal);border-color:var(--teal)}
 
 .items-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:11px}
 .item-card{
@@ -112,135 +135,139 @@ nav{
 .item-img img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
 .item-img .item-emoji{position:relative;z-index:1}
 .stock-badge{position:absolute;top:7px;right:7px;padding:2px 8px;border-radius:100px;font-size:0.63rem;font-weight:700;letter-spacing:0.5px}
-.s-ok{background:rgba(122,171,106,0.18);color:#3a6b3a}
-.s-low{background:rgba(212,132,10,0.15);color:var(--accent)}
-.s-none{background:rgba(192,57,43,0.12);color:var(--danger)}
+.s-ok{background:rgba(74,190,178,0.18);color:#086b64}
+.s-low{background:rgba(212,132,10,0.2);color:#b45309}
+.s-none{background:rgba(220,38,38,0.15);color:#b91c1c}
 .item-body{padding:11px}
-.item-cat{font-size:0.63rem;color:var(--sage);text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:3px}
-.item-name{font-weight:600;font-size:0.86rem;margin-bottom:5px;line-height:1.3}
-.item-price{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--accent);letter-spacing:1px}
+.item-cat{font-size:0.63rem;color:#0a7a70;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:3px}
+.item-name{font-weight:600;font-size:0.86rem;margin-bottom:5px;line-height:1.3;color:#0f1f15}
+.item-price{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:#0a7a70;letter-spacing:1px}
 .item-price sub{font-family:'DM Sans',sans-serif;font-size:0.62rem;font-weight:400;color:var(--stone)}
-.item-note{font-size:0.62rem;color:var(--stone);margin-top:2px}
+.item-note{font-size:0.62rem;color:#4a5a52;margin-top:2px}
 .item-btn{
   width:100%;margin-top:9px;padding:7px;
-  background:var(--forest);color:var(--sage);
+  background:var(--blue);color:#fff;
   border:none;border-radius:6px;font-size:0.76rem;
   font-weight:600;cursor:pointer;transition:all 0.15s;
-  font-family:'DM Sans',sans-serif;
+  font-family:'Plus Jakarta Sans',sans-serif;
 }
-.item-btn:hover:not(:disabled){background:var(--moss)}
-.item-btn:disabled{opacity:0.35;cursor:not-allowed}
-.item-btn.in-cart{background:rgba(122,171,106,0.14);color:var(--leaf);border:1px solid rgba(122,171,106,0.28)}
+.item-btn:hover:not(:disabled){background:var(--blue-dark)}
+.item-btn:disabled{opacity:0.35;cursor:not-allowed;background:#94a3b8;color:#fff}
+.item-btn-group{display:flex;gap:5px;margin-top:9px}
+.btn-add-more{flex:1;padding:7px;background:var(--blue);color:#fff;border:none;border-radius:6px;font-size:0.72rem;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'Plus Jakarta Sans',sans-serif}
+.btn-add-more:hover{background:var(--blue-dark)}
+.btn-remove{flex:1;padding:7px;background:var(--red);color:#fff;border:none;border-radius:6px;font-size:0.72rem;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'Plus Jakarta Sans',sans-serif}
+.btn-remove:hover{background:#b91c1c}
 
 /* RIGHT PANEL */
 .right-panel{position:sticky;top:72px;display:flex;flex-direction:column;gap:14px}
 
 /* CART */
-.cart-box{background:var(--forest);border-radius:12px;padding:18px;border:1px solid rgba(122,171,106,0.2)}
-.cart-header{display:flex;align-items:center;justify-content:space-between;padding-bottom:12px;border-bottom:1px solid rgba(122,171,106,0.14);margin-bottom:12px}
+.cart-box{background:var(--dark);border-radius:12px;padding:18px;border:1px solid var(--teal-border)}
+.cart-header{display:flex;align-items:center;justify-content:space-between;padding-bottom:12px;border-bottom:1px solid rgba(74,190,178,0.12);margin-bottom:12px}
 .cart-title{font-family:'Bebas Neue',sans-serif;font-size:1.05rem;color:var(--white);letter-spacing:2px}
-.cart-count{background:var(--accent);color:white;width:19px;height:19px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.68rem;font-weight:700}
-.cart-empty{text-align:center;padding:24px 0;color:rgba(200,223,192,0.35)}
+.cart-count{background:var(--blue);color:white;width:19px;height:19px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.68rem;font-weight:700}
+.cart-empty{text-align:center;padding:24px 0;color:rgba(74,190,178,0.6)}
 .cart-empty-icon{font-size:1.8rem;margin-bottom:5px}
 .cart-empty-text{font-size:0.76rem;line-height:1.5}
-.cart-item{display:flex;align-items:center;gap:9px;padding:7px 0;border-bottom:1px solid rgba(122,171,106,0.08)}
+.cart-item{display:flex;align-items:center;gap:9px;padding:7px 0;border-bottom:1px solid rgba(74,190,178,0.07)}
 .cart-item:last-of-type{border-bottom:none}
 .ci-info{flex:1;min-width:0}
-.ci-name{font-size:0.78rem;font-weight:500;color:var(--mist);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ci-price{font-size:0.68rem;color:var(--sage);margin-top:1px}
+.ci-name{font-size:0.78rem;font-weight:500;color:rgba(241,250,224,0.9);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ci-price{font-size:0.68rem;color:#5ecec5;margin-top:1px}
 .ci-sub{font-size:0.75rem;font-weight:600;color:var(--white);white-space:nowrap}
 .qty-ctrl{display:flex;align-items:center;gap:3px}
 .qty-btn{
-  width:20px;height:20px;background:rgba(122,171,106,0.12);
-  border:1px solid rgba(122,171,106,0.18);border-radius:4px;
-  color:var(--sage);cursor:pointer;font-size:0.88rem;
+  width:20px;height:20px;background:rgba(74,190,178,0.1);
+  border:1px solid rgba(74,190,178,0.25);border-radius:4px;
+  color:#4abeb2;cursor:pointer;font-size:0.88rem;
   display:flex;align-items:center;justify-content:center;transition:background 0.15s;
 }
-.qty-btn:hover{background:rgba(122,171,106,0.25)}
-.qty-num{font-size:0.82rem;font-weight:700;color:var(--white);min-width:15px;text-align:center}
+.qty-btn:hover{background:rgba(74,190,178,0.22)}
+.qty-num{font-size:0.82rem;font-weight:700;color:#ffffff;min-width:15px;text-align:center}
 
 /* SUMMARY */
-.summary-box{background:rgba(255,255,255,0.04);border-radius:7px;padding:11px 13px;margin-top:11px;border:1px solid rgba(122,171,106,0.1)}
-.sum-row{display:flex;justify-content:space-between;font-size:0.77rem;color:rgba(200,223,192,0.55);margin-bottom:5px}
-.sum-row.disc{color:var(--sage)}
-.sum-total{display:flex;justify-content:space-between;align-items:baseline;margin-top:9px;padding-top:9px;border-top:1px solid rgba(122,171,106,0.18)}
+.summary-box{background:rgba(255,255,255,0.03);border-radius:7px;padding:11px 13px;margin-top:11px;border:1px solid rgba(74,190,178,0.1)}
+.sum-row{display:flex;justify-content:space-between;font-size:0.77rem;color:rgba(241,250,224,0.75);margin-bottom:5px}
+.sum-row.disc{color:var(--teal)}
+.sum-total{display:flex;justify-content:space-between;align-items:baseline;margin-top:9px;padding-top:9px;border-top:1px solid rgba(74,190,178,0.15)}
 .sum-total-lbl{font-family:'Bebas Neue',sans-serif;font-size:0.95rem;color:var(--white);letter-spacing:1px}
 .sum-total-val{font-family:'Bebas Neue',sans-serif;font-size:1.45rem;color:var(--white);letter-spacing:1px}
-.sum-dp{display:flex;justify-content:space-between;background:rgba(212,132,10,0.09);border:1px solid rgba(212,132,10,0.18);border-radius:6px;padding:7px 10px;margin-top:7px}
-.sum-dp-lbl{font-size:0.72rem;color:rgba(212,132,10,0.8)}
-.sum-dp-val{font-size:0.86rem;font-weight:700;color:var(--accent)}
+.sum-dp{display:flex;justify-content:space-between;background:rgba(37,99,235,0.1);border:1px solid rgba(37,99,235,0.2);border-radius:6px;padding:7px 10px;margin-top:7px}
+.sum-dp-lbl{font-size:0.72rem;color:#93c5fd}
+.sum-dp-val{font-size:0.86rem;font-weight:700;color:var(--blue2)}
 
 /* FORM */
 .form-box{background:var(--white);border-radius:12px;padding:18px;border:1.5px solid var(--sand)}
-.form-box-title{font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:2px;color:var(--forest);margin-bottom:14px}
+.form-box-title{font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:2px;color:#0f1f15;margin-bottom:14px}
 .form-row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .fg{margin-bottom:10px}
 .fg:last-child{margin-bottom:0}
-.fl{display:block;font-size:0.67rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--stone);margin-bottom:4px}
+.fl{display:block;font-size:0.67rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#2d4038;margin-bottom:4px}
 .fi{
   width:100%;padding:8px 11px;
   background:var(--cream);border:1.5px solid var(--sand);
-  border-radius:7px;color:var(--forest);font-size:0.86rem;
+  border-radius:7px;color:#0f1f15;font-size:0.86rem;
   font-family:'DM Sans',sans-serif;transition:border-color 0.2s;
 }
-.fi:focus{outline:none;border-color:var(--sage)}
+.fi:focus{outline:none;border-color:var(--teal)}
 .student-row{
   display:flex;align-items:center;gap:9px;
   padding:9px 11px;background:var(--cream);
   border:1.5px solid var(--sand);border-radius:7px;
   cursor:pointer;transition:border-color 0.2s;
 }
-.student-row:hover{border-color:var(--sage)}
+.student-row:hover{border-color:var(--teal)}
 .tog-track{width:30px;height:17px;background:rgba(90,90,82,0.18);border-radius:100px;position:relative;transition:background 0.2s;flex-shrink:0}
 .tog-track::after{content:'';position:absolute;top:2px;left:2px;width:13px;height:13px;background:white;border-radius:50%;transition:transform 0.2s;box-shadow:0 1px 3px rgba(0,0,0,0.18)}
-.student-row.on .tog-track{background:var(--sage)}
+.student-row.on .tog-track{background:var(--teal)}
 .student-row.on .tog-track::after{transform:translateX(13px)}
-.tog-txt{font-size:0.8rem;color:var(--stone)}
-.tog-txt strong{color:var(--leaf)}
+.tog-txt{font-size:0.8rem;color:#2d4038}
+.tog-txt strong{color:var(--teal)}
 
 .submit-btn{
   width:100%;padding:13px;margin-top:12px;
-  background:var(--sage);color:var(--forest);
+  background:var(--teal);color:var(--dark);
   border:none;border-radius:8px;font-size:0.88rem;
   font-weight:700;letter-spacing:1px;text-transform:uppercase;
-  cursor:pointer;transition:all 0.2s;font-family:'DM Sans',sans-serif;
+  cursor:pointer;transition:all 0.2s;font-family:'Plus Jakarta Sans',sans-serif;
   display:flex;align-items:center;justify-content:center;gap:7px;
 }
-.submit-btn:hover:not(:disabled){background:var(--mist)}
+.submit-btn:hover:not(:disabled){background:var(--teal2)}
 .submit-btn:disabled{opacity:0.5;cursor:not-allowed}
 
 /* HOW IT WORKS */
 .how-section{padding:52px 5%;background:var(--white)}
-.how-title{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;letter-spacing:2px;margin-bottom:28px;text-align:center}
+.how-title{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;letter-spacing:2px;margin-bottom:28px;text-align:center;color:#0f1f15}
 .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:14px}
 .step{text-align:center;padding:22px 14px;border:1.5px solid var(--sand);border-radius:10px;position:relative;background:var(--cream)}
-.step-num{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:rgba(74,124,74,0.1);position:absolute;top:7px;right:11px;line-height:1}
+.step-num{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:rgba(74,190,178,0.1);position:absolute;top:7px;right:11px;line-height:1}
 .step-icon{font-size:1.7rem;margin-bottom:9px}
-.step-title{font-weight:700;font-size:0.86rem;margin-bottom:5px}
-.step-desc{font-size:0.76rem;color:var(--stone);line-height:1.5}
+.step-title{font-weight:700;font-size:0.86rem;margin-bottom:5px;color:#0f1f15}
+.step-desc{font-size:0.76rem;color:#3d5248;line-height:1.5}
 
 /* CONTACT */
-.contact-section{background:var(--moss);padding:52px 5%}
+.contact-section{background:var(--dark);padding:52px 5%;border-top:1px solid var(--teal-border)}
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
-.contact-info{color:var(--mist)}
-.contact-item{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid rgba(122,171,106,0.18)}
+.contact-info{color:rgba(241,250,224,0.95)}
+.contact-item{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--teal-border)}
 .contact-item:last-child{border-bottom:none}
 .contact-icon{font-size:1.4rem;width:36px;text-align:center}
-.contact-detail small{font-size:0.68rem;text-transform:uppercase;letter-spacing:1px;color:var(--sage)}
+.contact-detail small{font-size:0.68rem;text-transform:uppercase;letter-spacing:1px;color:var(--teal)}
 .contact-detail p{font-size:0.96rem;font-weight:500;color:var(--white);margin-top:2px}
-.section-tag{display:inline-block;font-size:0.68rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--sage);margin-bottom:10px}
+.section-tag{display:inline-block;font-size:0.68rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--teal);margin-bottom:10px}
 .section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,4vw,3rem);line-height:1;color:var(--forest);margin-bottom:6px;letter-spacing:1px}
 .section-title.light{color:var(--white)}
-.section-sub{color:var(--stone);font-size:0.95rem;font-weight:300;max-width:480px;line-height:1.7}
-.btn-primary{display:inline-flex;align-items:center;gap:7px;background:var(--sage);color:var(--forest);border:none;border-radius:4px;padding:13px 26px;font-size:0.88rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all 0.2s;text-decoration:none;font-family:'DM Sans',sans-serif}
-.btn-primary:hover{background:var(--mist);transform:translateY(-2px)}
+.section-sub{color:#3d5248;font-size:0.95rem;font-weight:300;max-width:480px;line-height:1.7}
+.btn-primary{display:inline-flex;align-items:center;gap:7px;background:var(--teal);color:var(--dark);border:none;border-radius:4px;padding:13px 26px;font-size:0.88rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all 0.2s;text-decoration:none;font-family:'Plus Jakarta Sans',sans-serif}
+.btn-primary:hover{background:var(--teal2);transform:translateY(-2px)}
 
 /* FOOTER */
-footer{background:var(--forest);padding:28px 5%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
-.footer-logo{font-family:'Bebas Neue',sans-serif;color:var(--sage);font-size:1.2rem;letter-spacing:3px}
+footer{background:var(--dark);padding:28px 5%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;border-top:1px solid var(--teal-border)}
+.footer-logo{font-family:'Bebas Neue',sans-serif;color:var(--teal);font-size:1.2rem;letter-spacing:3px}
 .footer-links{display:flex;gap:18px}
-.footer-links a{color:rgba(200,223,192,0.55);text-decoration:none;font-size:0.8rem;transition:color 0.2s}
-.footer-links a:hover{color:var(--sage)}
+.footer-links a{color:rgba(74,190,178,0.85);text-decoration:none;font-size:0.8rem;transition:color 0.2s}
+.footer-links a:hover{color:var(--teal)}
 
 /* MODAL */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.78);z-index:500;align-items:center;justify-content:center;padding:20px}
@@ -248,21 +275,21 @@ footer{background:var(--forest);padding:28px 5%;display:flex;align-items:center;
 .modal{background:var(--cream);border-radius:14px;padding:34px;max-width:460px;width:100%;max-height:90vh;overflow-y:auto}
 .modal-icon{font-size:2.4rem;text-align:center;margin-bottom:11px}
 .modal-title{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;text-align:center;letter-spacing:2px;margin-bottom:6px;color:var(--forest)}
-.modal-body{font-size:0.84rem;color:var(--stone);line-height:1.7}
+.modal-body{font-size:0.84rem;color:#2d4038;line-height:1.7}
 .order-summary{background:var(--white);border:1px solid var(--sand);border-radius:8px;padding:15px;margin:15px 0}
-.orow{display:flex;justify-content:space-between;font-size:0.8rem;color:var(--stone);padding:5px 0;border-bottom:1px solid var(--sand)}
+.orow{display:flex;justify-content:space-between;font-size:0.8rem;color:#2d4038;padding:5px 0;border-bottom:1px solid var(--sand)}
 .orow:last-child{border-bottom:none}
-.orow.hl{color:var(--forest);font-weight:600}
+.orow.hl{color:#0f1f15;font-weight:600}
 .wa-msg{background:#dcf8c6;border-radius:8px;padding:13px;font-size:0.74rem;line-height:1.6;color:#333;white-space:pre-wrap;font-family:monospace;margin:12px 0;max-height:190px;overflow-y:auto}
 .btn-wa{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;background:#25D366;color:white;border:none;border-radius:8px;padding:14px;font-size:0.92rem;font-weight:700;cursor:pointer;text-decoration:none;font-family:'DM Sans',sans-serif;transition:background 0.2s}
 .btn-wa:hover{background:#128C7E}
 .btn-close{width:100%;margin-top:8px;padding:10px;background:transparent;border:1.5px solid var(--sand);border-radius:8px;cursor:pointer;font-family:'DM Sans',sans-serif;color:var(--stone);font-size:0.8rem}
 
 /* UTIL */
-.loading{display:flex;align-items:center;justify-content:center;gap:8px;padding:30px;color:var(--stone);font-size:0.83rem}
-.spin{width:17px;height:17px;border:2px solid var(--sand);border-top-color:var(--sage);border-radius:50%;animation:spin 0.8s linear infinite}
+.loading{display:flex;align-items:center;justify-content:center;gap:8px;padding:30px;color:#3d5248;font-size:0.83rem}
+.spin{width:17px;height:17px;border:2px solid var(--sand);border-top-color:var(--teal);border-radius:50%;animation:spin 0.8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.toast{position:fixed;bottom:20px;right:20px;background:var(--forest);color:var(--sage);padding:10px 17px;border-radius:8px;font-size:0.8rem;font-weight:500;border:1px solid rgba(122,171,106,0.28);transform:translateY(60px);opacity:0;transition:all 0.3s;z-index:9999}
+.toast{position:fixed;bottom:20px;right:20px;background:var(--dark);color:var(--teal);padding:10px 17px;border-radius:8px;font-size:0.8rem;font-weight:500;border:1px solid var(--teal-border);transform:translateY(60px);opacity:0;transition:all 0.3s;z-index:9999}
 .toast.show{transform:translateY(0);opacity:1}
 
 @media(max-width:960px){
@@ -270,10 +297,12 @@ footer{background:var(--forest);padding:28px 5%;display:flex;align-items:center;
   .right-panel{position:static}
   .form-row2{grid-template-columns:1fr}
   .contact-grid{grid-template-columns:1fr}
+  .hero{grid-template-columns:1fr}
+  .hero-right{display:none}
+  .hero-left{padding:88px 5% 36px}
 }
 @media(max-width:600px){
   nav .nav-links{display:none}
-  .hero{padding:80px 5% 32px}
   .date-bar{gap:10px}
 }
 </style>
@@ -281,7 +310,7 @@ footer{background:var(--forest);padding:28px 5%;display:flex;align-items:center;
 <body>
 
 <nav>
-  <div class="nav-logo">OUTDOOR<span>.</span>RENTAL</div>
+  <div class="nav-logo">ROOSTER OUTDOOR<span>.</span>RENTAL</div>
   <div class="nav-links">
     <a href="#order">Booking</a>
     <a href="#cara-sewa">Cara Sewa</a>
@@ -291,14 +320,19 @@ footer{background:var(--forest);padding:28px 5%;display:flex;align-items:center;
 </nav>
 
 <div class="hero">
-  <div class="hero-text">
-    <h1>SEWA ALAT<br><em>OUTDOOR</em></h1>
-    <p>Tenda, carrier, sleeping bag, kompor & lebih. Harga terjangkau, kondisi terjaga.</p>
-    <div class="hero-badges">
-      <span class="hbadge">⛰️ Stok Real-time</span>
-      <span class="hbadge">🎓 Diskon Mahasiswa 10%</span>
-      <span class="hbadge">⚡ Konfirmasi via WA</span>
+  <div class="hero-left">
+    <div class="hero-text">
+      <h1>SEWA ALAT<br><em>OUTDOOR</em></h1>
+      <p>Tenda, carrier, sleeping bag, kompor & lebih. Harga terjangkau, kondisi terjaga.</p>
+      <div class="hero-badges">
+        <span class="hbadge">⛰️ Stok Real-time</span>
+        <span class="hbadge">🎓 Diskon Mahasiswa 10%</span>
+        <span class="hbadge">⚡ Konfirmasi via WA</span>
+      </div>
     </div>
+  </div>
+  <div class="hero-right">
+    <img src="hero-bg.jpg" alt="Outdoor adventure">
   </div>
 </div>
 
@@ -438,7 +472,7 @@ footer{background:var(--forest);padding:28px 5%;display:flex;align-items:center;
 </div>
 
 <footer>
-  <div class="footer-logo">⛰️ OUTDOOR.RENTAL 🌲</div>
+  <div class="footer-logo">⛰️ ROOSTER OUTDOOR.RENTAL 🌲</div>
   <div class="footer-links">
     <a id="waFooterBtn" href="#">💬 WhatsApp</a>
     <a id="igFooterBtn" href="#">📸 Instagram</a>
@@ -566,9 +600,12 @@ function renderCatalog() {
         <div class="item-name">${item['Nama Barang']}</div>
         <div class="item-price">${formatRp(item['Harga/Hari'])} <sub>/hari</sub></div>
         ${item['Catatan'] ? `<div class="item-note">${item['Catatan']}</div>` : ''}
-        <button class="item-btn ${qty>0?'in-cart':''}" onclick="addToCart('${item['ID']}')" ${avail<=0?'disabled':''}>
-          ${avail<=0 ? '✗ Tidak Tersedia' : qty>0 ? `✓ Di Keranjang (${qty})` : '+ Tambah'}
-        </button>
+        ${avail<=0
+          ? '<button class="item-btn" disabled>✗ Tidak Tersedia</button>'
+          : qty>0
+            ? `<div class="item-btn-group"><button class="btn-add-more" onclick="addToCart('${item['ID']}')">+ Tambah lagi (${qty})</button><button class="btn-remove" onclick="changeQty('${item['ID']}',-1)">− Kurangi</button></div>`
+            : `<button class="item-btn" onclick="addToCart('${item['ID']}')">+ Tambah</button>`
+        }
       </div>
     </div>`;
   }).join('');
