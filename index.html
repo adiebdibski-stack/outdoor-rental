@@ -47,30 +47,31 @@ nav{
 /* HERO */
 .hero{
   background:var(--dark);padding:0;
-  display:grid;grid-template-columns:1fr 1fr;
-  border-bottom:2px solid rgba(74,190,178,0.1);
   position:relative;overflow:hidden;
+  border-bottom:2px solid rgba(74,190,178,0.1);
   min-height:340px;
 }
-.hero-left{
-  padding:96px 5% 44px;
+.hero-inner{
+  max-width:100%;
+  padding:92px 5% 44px;
+  position:relative;z-index:2;
   display:flex;align-items:center;
+}
+.hero-left{
+  flex:0 0 50%;max-width:50%;
   position:relative;z-index:2;
 }
-.hero-left::after{
-  content:'';position:absolute;
-  top:0;right:-80px;bottom:0;width:160px;
-  background:linear-gradient(to right,var(--dark),transparent);
-  z-index:3;pointer-events:none;
-}
 .hero-right{
-  position:relative;overflow:hidden;
+  position:absolute;
+  top:0;right:0;
+  width:55%;height:100%;
+  z-index:1;
 }
 .hero-right img{
-  width:100%;height:100%;object-fit:cover;object-position:center;
+  width:100%;height:100%;object-fit:cover;object-position:center left;
   display:block;
-  mask-image:linear-gradient(to left,rgba(0,0,0,1) 40%,transparent 100%);
-  -webkit-mask-image:linear-gradient(to left,rgba(0,0,0,1) 40%,transparent 100%);
+  mask-image:linear-gradient(to left,rgba(0,0,0,1) 30%,transparent 80%);
+  -webkit-mask-image:linear-gradient(to left,rgba(0,0,0,1) 30%,transparent 80%);
 }
 .hero-text{position:relative;z-index:2;max-width:520px;}
 .hero-text h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.8rem,6vw,4.5rem);line-height:0.95;color:var(--white);letter-spacing:2px}
@@ -134,10 +135,16 @@ nav{
 .item-img{height:120px;background:var(--moss);display:flex;align-items:center;justify-content:center;font-size:2.3rem;position:relative;overflow:hidden}
 .item-img img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
 .item-img .item-emoji{position:relative;z-index:1}
-.stock-badge{position:absolute;top:7px;right:7px;padding:2px 8px;border-radius:100px;font-size:0.63rem;font-weight:700;letter-spacing:0.5px}
-.s-ok{background:rgba(74,190,178,0.18);color:#086b64}
-.s-low{background:rgba(212,132,10,0.2);color:#b45309}
-.s-none{background:rgba(220,38,38,0.15);color:#b91c1c}
+.stock-badge{
+  position:absolute;top:9px;right:9px;
+  padding:4px 11px;border-radius:100px;
+  font-size:0.68rem;font-weight:700;letter-spacing:0.3px;
+  outline:2.5px solid rgba(255,255,255,0.85);
+  outline-offset:0px;
+}
+.s-ok{background:#0f1f15;color:#ffffff}
+.s-low{background:#78350f;color:#ffffff}
+.s-none{background:#7f1d1d;color:#ffffff}
 .item-body{padding:11px}
 .item-cat{font-size:0.63rem;color:#0a7a70;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:3px}
 .item-name{font-weight:600;font-size:0.86rem;margin-bottom:5px;line-height:1.3;color:#0f1f15}
@@ -297,9 +304,9 @@ footer{background:var(--dark);padding:28px 5%;display:flex;align-items:center;ju
   .right-panel{position:static}
   .form-row2{grid-template-columns:1fr}
   .contact-grid{grid-template-columns:1fr}
-  .hero{grid-template-columns:1fr}
   .hero-right{display:none}
-  .hero-left{padding:88px 5% 36px}
+  .hero-left{flex:0 0 100%;max-width:100%}
+  .hero-inner{padding:88px 5% 36px}
 }
 @media(max-width:600px){
   nav .nav-links{display:none}
@@ -320,14 +327,16 @@ footer{background:var(--dark);padding:28px 5%;display:flex;align-items:center;ju
 </nav>
 
 <div class="hero">
-  <div class="hero-left">
-    <div class="hero-text">
-      <h1>SEWA ALAT<br><em>OUTDOOR</em></h1>
-      <p>Tenda, carrier, sleeping bag, kompor & lebih. Harga terjangkau, kondisi terjaga.</p>
-      <div class="hero-badges">
-        <span class="hbadge">⛰️ Stok Real-time</span>
-        <span class="hbadge">🎓 Diskon Mahasiswa 10%</span>
-        <span class="hbadge">⚡ Konfirmasi via WA</span>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-text">
+        <h1>SEWA ALAT<br><em>OUTDOOR</em></h1>
+        <p>Tenda, carrier, sleeping bag, kompor & lebih. Harga terjangkau, kondisi terjaga.</p>
+        <div class="hero-badges">
+          <span class="hbadge">⛰️ Stok Real-time</span>
+          <span class="hbadge">🎓 Diskon Mahasiswa 10%</span>
+          <span class="hbadge">⚡ Konfirmasi via WA</span>
+        </div>
       </div>
     </div>
   </div>
@@ -582,7 +591,7 @@ function renderCatalog() {
   document.getElementById('itemsGrid').innerHTML = filtered.map(item => {
     const avail = Number(item['Stok Tersedia']) || 0;
     const sc = avail <= 0 ? 's-none' : avail === 1 ? 's-low' : 's-ok';
-    const st = avail <= 0 ? 'Habis' : avail === 1 ? '1 tersisa' : `${avail} tersedia`;
+    const st = avail <= 0 ? 'Habis' : avail === 1 ? 'Tersedia 1' : `Tersedia ${avail}`;
     const qty = cart[item['ID']]?.quantity || 0;
     const foto = item['Foto'] ? item['Foto'].toString().trim() : '';
     const fotoUrl = convertDriveUrl(foto);
