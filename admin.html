@@ -331,6 +331,16 @@ select.table-select{background:var(--surface2);border:1px solid var(--border);co
         <input class="form-input" id="itemNotes" placeholder="e.g. Per pasang">
       </div>
     </div>
+    <div class="form-group">
+      <label class="form-label">📷 URL Foto (Google Drive / link gambar)</label>
+      <input class="form-input" id="itemFoto" placeholder="https://drive.google.com/file/d/...">
+      <div id="fotoPreview" style="margin-top:8px;display:none">
+        <img id="fotoPreviewImg" src="" style="width:100%;max-height:140px;object-fit:cover;border-radius:6px;border:1px solid var(--border)">
+      </div>
+      <div style="font-size:0.72rem;color:var(--text-dim);margin-top:5px">
+        Google Drive: klik kanan foto → <em>Get link</em> → ubah akses ke <strong>Anyone with link</strong> → paste URL-nya
+      </div>
+    </div>
     <div class="modal-actions">
       <button class="btn btn-accent" onclick="saveItem()">Simpan</button>
       <button class="btn" style="background:var(--surface2);color:var(--text-dim)" onclick="closeModal('itemModal')">Batal</button>
@@ -371,8 +381,8 @@ select.table-select{background:var(--surface2);border:1px solid var(--border);co
 // ============================================================
 // KONFIGURASI
 // ============================================================
-const API_URL = 'https://script.google.com/macros/s/AKfycbzb8TNcTQLwV6bopVsGcVbhvNAygecguGXplJ7tvSnhxhzQYgT1T5ga39Jes5rLgZ42sg/exec'; // sama dengan frontend
-const ADMIN_PASS = '1234'; // Ganti sesuai password di Code.gs
+const API_URL = 'GANTI_DENGAN_URL_APPS_SCRIPT_KAMU'; // sama dengan frontend
+const ADMIN_PASS = 'admin123'; // Ganti sesuai password di Code.gs
 
 // ============================================================
 // AUTH
@@ -596,7 +606,7 @@ async function loadItemsTable() {
         <thead><tr>
           <th>ID</th><th>Nama Barang</th><th>Kategori</th>
           <th>Harga/Hari</th><th>Stok Total</th><th>Stok Tersedia</th>
-          <th>Kondisi</th><th>Aksi</th>
+          <th>Foto</th><th>Kondisi</th><th>Aksi</th>
         </tr></thead>
         <tbody>
           ${data.map(i => `<tr>
@@ -609,6 +619,9 @@ async function loadItemsTable() {
               <span class="${i['Stok Tersedia']<=0?'c-red':i['Stok Tersedia']<=1?'c-yellow':'c-green'}" style="font-weight:700">
                 ${i['Stok Tersedia']}
               </span>
+            </td>
+            <td>
+              ${i['Foto'] ? `<img src="${convertDriveUrlAdmin(i['Foto'])}" style="width:48px;height:36px;object-fit:cover;border-radius:4px;border:1px solid var(--border)" onerror="this.style.display='none'">` : '<span style="color:var(--text-dim);font-size:0.75rem">—</span>'}
             </td>
             <td><span class="badge ${i['Kondisi']==='Baik'?'badge-green':'badge-yellow'}">${i['Kondisi']}</span></td>
             <td>
@@ -672,8 +685,9 @@ async function confirmReturn(orderId, clientName) {
 function openAddItem() {
   document.getElementById('itemModalTitle').textContent = 'TAMBAH BARANG';
   document.getElementById('itemId').value = '';
-  ['itemName','itemCategory','itemPrice','itemStock','itemNotes'].forEach(id => document.getElementById(id).value = '');
+  ['itemName','itemCategory','itemPrice','itemStock','itemNotes','itemFoto'].forEach(id => document.getElementById(id).value = '');
   document.getElementById('itemCondition').value = 'Baik';
+  document.getElementById('fotoPreview').style.display = 'none';
   document.getElementById('itemModal').classList.add('open');
 }
 
@@ -686,6 +700,15 @@ function openEditItem(item) {
   document.getElementById('itemStock').value = item['Stok Total'];
   document.getElementById('itemCondition').value = item['Kondisi'];
   document.getElementById('itemNotes').value = item['Catatan'] || '';
+  const foto = item['Foto'] || '';
+  document.getElementById('itemFoto').value = foto;
+  if (foto) {
+    const url = convertDriveUrlAdmin(foto);
+    document.getElementById('fotoPreviewImg').src = url;
+    document.getElementById('fotoPreview').style.display = 'block';
+  } else {
+    document.getElementById('fotoPreview').style.display = 'none';
+  }
   document.getElementById('itemModal').classList.add('open');
 }
 
@@ -698,6 +721,7 @@ async function saveItem() {
     totalStock: parseInt(document.getElementById('itemStock').value),
     condition: document.getElementById('itemCondition').value,
     notes: document.getElementById('itemNotes').value,
+    foto: document.getElementById('itemFoto').value.trim(),
   };
   
   if (!payload.name || !payload.category || !payload.pricePerDay) {
@@ -752,6 +776,27 @@ async function saveDamage() {
 function closeModal(id) {
   document.getElementById(id).classList.remove('open');
 }
+
+function convertDriveUrlAdmin(url) {
+  if (!url) return '';
+  const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
+  if (match) return `https://drive.google.com/thumbnail?id=${match[1]}&sz=w400`;
+  if (url.startsWith('http')) return url;
+  return '';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const fotoInput = document.getElementById('itemFoto');
+  if (fotoInput) {
+    fotoInput.addEventListener('input', () => {
+      const url = convertDriveUrlAdmin(fotoInput.value.trim());
+      const preview = document.getElementById('fotoPreview');
+      const img = document.getElementById('fotoPreviewImg');
+      if (url) { img.src = url; preview.style.display = 'block'; }
+      else { preview.style.display = 'none'; }
+    });
+  }
+});
 
 function openWA(number, msg) {
   const clean = number.replace(/\D/g,'');
