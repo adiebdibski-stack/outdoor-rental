@@ -14,690 +14,450 @@
   --mist: #c8dfc0;
   --cream: #f5f0e8;
   --sand: #e8dcc8;
-  --bark: #8b6344;
   --stone: #5a5a52;
   --white: #fafaf7;
   --accent: #d4840a;
   --danger: #c0392b;
 }
-* { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior: smooth; }
-body {
-  font-family: 'DM Sans', sans-serif;
-  background: var(--cream);
-  color: var(--forest);
-  overflow-x: hidden;
-}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--forest);overflow-x:hidden}
 
 /* NAV */
-nav {
-  position: fixed; top:0; width:100%; z-index:100;
-  background: rgba(26,46,26,0.95);
-  backdrop-filter: blur(12px);
-  padding: 0 5%;
-  display: flex; align-items:center; justify-content:space-between;
-  height: 64px;
-  border-bottom: 1px solid rgba(122,171,106,0.2);
+nav{
+  position:fixed;top:0;width:100%;z-index:200;
+  background:rgba(26,46,26,0.97);backdrop-filter:blur(12px);
+  padding:0 5%;display:flex;align-items:center;justify-content:space-between;
+  height:60px;border-bottom:1px solid rgba(122,171,106,0.2);
 }
-.nav-logo {
-  font-family: 'Bebas Neue', sans-serif;
-  color: var(--sage);
-  font-size: 1.6rem;
-  letter-spacing: 3px;
-}
-.nav-logo span { color: var(--accent); }
-.nav-links { display:flex; gap:28px; }
-.nav-links a {
-  color: var(--mist); text-decoration:none;
-  font-size: 0.85rem; font-weight:500; letter-spacing:1px;
-  text-transform: uppercase; transition: color 0.2s;
-}
-.nav-links a:hover { color: var(--sage); }
+.nav-logo{font-family:'Bebas Neue',sans-serif;color:var(--sage);font-size:1.5rem;letter-spacing:3px}
+.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;gap:24px}
+.nav-links a{color:rgba(200,223,192,0.8);text-decoration:none;font-size:0.8rem;font-weight:500;letter-spacing:1px;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover{color:var(--sage)}
 
 /* HERO */
-.hero {
-  min-height: 100vh;
-  background: var(--forest);
-  display: flex; align-items:center;
-  position: relative; overflow: hidden;
-  padding: 80px 5% 40px;
+.hero{
+  background:var(--forest);padding:96px 5% 44px;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:40px;flex-wrap:wrap;
+  border-bottom:2px solid rgba(122,171,106,0.12);
+  position:relative;overflow:hidden;
 }
-.hero-bg {
-  position: absolute; inset:0;
-  background:
-    radial-gradient(ellipse 60% 80% at 70% 50%, rgba(74,124,74,0.15) 0%, transparent 60%),
-    radial-gradient(ellipse 40% 60% at 20% 80%, rgba(212,132,10,0.08) 0%, transparent 50%);
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 80% at 70% 50%,rgba(74,124,74,0.12) 0%,transparent 60%);
+  pointer-events:none;
 }
-.hero-grid {
-  position: absolute; inset:0; opacity:0.04;
-  background-image:
-    linear-gradient(var(--sage) 1px, transparent 1px),
-    linear-gradient(90deg, var(--sage) 1px, transparent 1px);
-  background-size: 40px 40px;
+.hero-text{position:relative}
+.hero-text h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.8rem,6vw,4.5rem);line-height:0.95;color:var(--white);letter-spacing:2px}
+.hero-text h1 em{color:var(--sage);font-style:normal}
+.hero-text p{color:rgba(200,223,192,0.65);font-size:0.95rem;margin-top:12px;font-weight:300;max-width:400px;line-height:1.6}
+.hero-badges{display:flex;gap:8px;margin-top:18px;flex-wrap:wrap}
+.hbadge{
+  background:rgba(122,171,106,0.1);border:1px solid rgba(122,171,106,0.22);
+  border-radius:100px;padding:5px 14px;font-size:0.73rem;
+  color:var(--mist);font-weight:500;letter-spacing:0.5px;
 }
-.hero-content { position:relative; max-width:600px; }
-.hero-badge {
-  display: inline-flex; align-items:center; gap:8px;
-  background: rgba(122,171,106,0.12);
-  border: 1px solid rgba(122,171,106,0.3);
-  border-radius:100px; padding: 6px 16px;
-  color: var(--sage); font-size:0.78rem;
-  font-weight:500; letter-spacing:2px;
-  text-transform: uppercase; margin-bottom:24px;
-}
-.hero-badge::before {
-  content:''; width:6px; height:6px;
-  background: var(--sage); border-radius:50%;
-  animation: pulse 2s infinite;
-}
-@keyframes pulse {
-  0%,100%{opacity:1;transform:scale(1)}
-  50%{opacity:0.5;transform:scale(1.5)}
-}
-h1 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(3.5rem, 8vw, 6.5rem);
-  line-height:0.95; color: var(--white);
-  letter-spacing:2px; margin-bottom:24px;
-}
-h1 em { color: var(--sage); font-style:normal; }
-.hero-sub {
-  color: rgba(200,223,192,0.7);
-  font-size:1.05rem; line-height:1.7;
-  max-width:440px; margin-bottom:40px;
-  font-weight:300;
-}
-.hero-ctas { display:flex; gap:14px; flex-wrap:wrap; }
-.btn-primary {
-  display: inline-flex; align-items:center; gap:8px;
-  background: var(--sage);
-  color: var(--forest);
-  border:none; border-radius:4px;
-  padding: 14px 28px; font-size:0.9rem;
-  font-weight:700; letter-spacing:1px;
-  text-transform: uppercase; cursor:pointer;
-  transition: all 0.2s; text-decoration:none;
-  font-family: 'DM Sans', sans-serif;
-}
-.btn-primary:hover { background: var(--mist); transform:translateY(-2px); }
-.btn-outline {
-  display: inline-flex; align-items:center; gap:8px;
-  background: transparent;
-  border: 1.5px solid rgba(122,171,106,0.5);
-  color: var(--mist); border-radius:4px;
-  padding: 14px 28px; font-size:0.9rem;
-  font-weight:500; cursor:pointer;
-  transition: all 0.2s; text-decoration:none;
-  font-family: 'DM Sans', sans-serif;
-}
-.btn-outline:hover { border-color: var(--sage); color: var(--sage); }
 
-/* STATS BAR */
-.stats-bar {
-  background: var(--moss);
-  padding: 20px 5%;
-  display: flex; gap:0; overflow:hidden;
-}
-.stat-item {
-  flex:1; text-align:center;
-  border-right: 1px solid rgba(122,171,106,0.2);
-  padding: 12px 20px;
-}
-.stat-item:last-child { border-right:none; }
-.stat-num {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size:2rem; color: var(--sage);
-  letter-spacing:2px;
-}
-.stat-label { font-size:0.75rem; color: var(--mist); font-weight:300; letter-spacing:1px; }
+/* MAIN */
+.main-wrap{max-width:1400px;margin:0 auto;padding:28px 5% 80px}
 
-/* SECTION HEADERS */
-section { padding: 80px 5%; }
-.section-tag {
-  display: inline-block;
-  font-size:0.72rem; font-weight:700;
-  letter-spacing:3px; text-transform:uppercase;
-  color: var(--sage); margin-bottom:12px;
+/* DATE BAR */
+.date-bar{
+  background:var(--forest);border-radius:12px;padding:18px 22px;
+  display:flex;align-items:center;gap:16px;margin-bottom:22px;
+  flex-wrap:wrap;border:1px solid rgba(122,171,106,0.2);
 }
-.section-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  line-height:1; color: var(--forest);
-  margin-bottom:8px; letter-spacing:1px;
+.date-bar-title{font-family:'Bebas Neue',sans-serif;font-size:0.95rem;color:var(--sage);letter-spacing:2px;white-space:nowrap}
+.date-field{display:flex;align-items:center;gap:10px;flex:1;min-width:170px}
+.date-lbl{font-size:0.68rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(200,223,192,0.45);white-space:nowrap}
+.date-inp{
+  flex:1;padding:8px 12px;
+  background:rgba(255,255,255,0.07);border:1px solid rgba(122,171,106,0.22);
+  border-radius:7px;color:var(--white);font-size:0.88rem;
+  font-family:'DM Sans',sans-serif;transition:border-color 0.2s;
 }
-.section-title.light { color: var(--white); }
-.section-sub {
-  color: var(--stone); font-size:1rem;
-  font-weight:300; max-width:500px;
-  line-height:1.7;
+.date-inp:focus{outline:none;border-color:var(--sage)}
+.date-inp::-webkit-calendar-picker-indicator{filter:invert(1) opacity(0.45)}
+.date-arrow{color:rgba(200,223,192,0.3);font-size:1rem}
+.date-dur{
+  background:rgba(122,171,106,0.1);border:1px solid rgba(122,171,106,0.18);
+  border-radius:7px;padding:8px 14px;white-space:nowrap;
+  font-size:0.82rem;font-weight:600;color:var(--sage);min-width:96px;text-align:center;
 }
+
+/* TWO-COL */
+.content-grid{display:grid;grid-template-columns:1fr 356px;gap:22px;align-items:start}
 
 /* CATALOG */
-#catalog { background: var(--white); }
-.catalog-header {
-  display:flex; align-items:flex-end;
-  justify-content:space-between; margin-bottom:40px;
-  flex-wrap:wrap; gap:20px;
+.section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+.section-lbl{font-family:'Bebas Neue',sans-serif;font-size:1.35rem;letter-spacing:2px;color:var(--forest)}
+.filter-tabs{display:flex;gap:6px;flex-wrap:wrap}
+.filter-tab{
+  padding:5px 14px;border-radius:100px;
+  border:1.5px solid var(--sand);background:transparent;
+  cursor:pointer;font-size:0.76rem;font-weight:500;
+  color:var(--stone);transition:all 0.15s;font-family:'DM Sans',sans-serif;
 }
-.filter-tabs {
-  display:flex; gap:8px; flex-wrap:wrap;
-}
-.filter-tab {
-  padding: 8px 18px; border-radius:100px;
-  border: 1.5px solid var(--sand);
-  background: transparent; cursor:pointer;
-  font-size:0.82rem; font-weight:500;
-  color: var(--stone); transition: all 0.2s;
-  font-family: 'DM Sans', sans-serif;
-}
-.filter-tab.active, .filter-tab:hover {
-  background: var(--forest); color: var(--sage);
-  border-color: var(--forest);
-}
-.items-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 16px;
-}
-.item-card {
-  background: var(--cream);
-  border: 1px solid var(--sand);
-  border-radius:8px; overflow:hidden;
-  transition: all 0.2s; cursor:pointer;
-}
-.item-card:hover { transform:translateY(-4px); box-shadow:0 12px 40px rgba(26,46,26,0.12); }
-.item-img {
-  height:140px; background: var(--moss);
-  display:flex; align-items:center; justify-content:center;
-  font-size:3rem; position:relative;
-}
-.item-stock-badge {
-  position:absolute; top:10px; right:10px;
-  padding: 3px 10px; border-radius:100px;
-  font-size:0.7rem; font-weight:600;
-  letter-spacing:0.5px;
-}
-.stock-ok { background: rgba(122,171,106,0.15); color: #4a7c4a; }
-.stock-low { background: rgba(212,132,10,0.15); color: var(--accent); }
-.stock-none { background: rgba(192,57,43,0.15); color: var(--danger); }
-.item-body { padding:14px; }
-.item-name { font-weight:600; font-size:0.95rem; margin-bottom:4px; }
-.item-cat {
-  font-size:0.72rem; color: var(--sage);
-  text-transform:uppercase; letter-spacing:1px;
-  font-weight:600; margin-bottom:10px;
-}
-.item-price {
-  font-family:'Bebas Neue',sans-serif;
-  font-size:1.4rem; color: var(--accent);
-  letter-spacing:1px;
-}
-.item-price-sub { font-size:0.72rem; color: var(--stone); font-family:'DM Sans',sans-serif; }
-.item-add {
-  width:100%; margin-top:12px;
-  padding:9px; background: var(--forest);
-  color: var(--sage); border:none; border-radius:4px;
-  font-size:0.82rem; font-weight:600;
-  cursor:pointer; transition: all 0.2s;
-  font-family:'DM Sans',sans-serif; letter-spacing:0.5px;
-}
-.item-add:hover:not(:disabled) { background: var(--moss); }
-.item-add:disabled { opacity:0.4; cursor:not-allowed; }
+.filter-tab.active,.filter-tab:hover{background:var(--forest);color:var(--sage);border-color:var(--forest)}
 
-/* BOOKING FORM */
-#booking { background: var(--forest); }
-.booking-layout {
-  display:grid; grid-template-columns:1fr 400px; gap:60px;
-  align-items:start;
+.items-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:11px}
+.item-card{
+  background:var(--white);border:1.5px solid var(--sand);
+  border-radius:10px;overflow:hidden;transition:all 0.2s;
 }
-.form-card {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(122,171,106,0.2);
-  border-radius:12px; padding:40px;
+.item-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(26,46,26,0.1)}
+.item-img{height:108px;background:var(--moss);display:flex;align-items:center;justify-content:center;font-size:2.3rem;position:relative}
+.stock-badge{position:absolute;top:7px;right:7px;padding:2px 8px;border-radius:100px;font-size:0.63rem;font-weight:700;letter-spacing:0.5px}
+.s-ok{background:rgba(122,171,106,0.18);color:#3a6b3a}
+.s-low{background:rgba(212,132,10,0.15);color:var(--accent)}
+.s-none{background:rgba(192,57,43,0.12);color:var(--danger)}
+.item-body{padding:11px}
+.item-cat{font-size:0.63rem;color:var(--sage);text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:3px}
+.item-name{font-weight:600;font-size:0.86rem;margin-bottom:5px;line-height:1.3}
+.item-price{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--accent);letter-spacing:1px}
+.item-price sub{font-family:'DM Sans',sans-serif;font-size:0.62rem;font-weight:400;color:var(--stone)}
+.item-note{font-size:0.62rem;color:var(--stone);margin-top:2px}
+.item-btn{
+  width:100%;margin-top:9px;padding:7px;
+  background:var(--forest);color:var(--sage);
+  border:none;border-radius:6px;font-size:0.76rem;
+  font-weight:600;cursor:pointer;transition:all 0.15s;
+  font-family:'DM Sans',sans-serif;
 }
-.form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
-.form-group { margin-bottom:20px; }
-.form-label {
-  display:block; font-size:0.75rem;
-  font-weight:600; letter-spacing:2px;
-  text-transform:uppercase; color: var(--sage);
-  margin-bottom:8px;
-}
-.form-input {
-  width:100%; padding:12px 16px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(122,171,106,0.2);
-  border-radius:6px; color: var(--white);
-  font-size:0.95rem; font-family:'DM Sans',sans-serif;
-  transition: border-color 0.2s;
-}
-.form-input:focus { outline:none; border-color: var(--sage); }
-.form-input::placeholder { color: rgba(200,223,192,0.3); }
-.form-input option { background: var(--forest); }
-.student-toggle {
-  display:flex; align-items:center; gap:12px;
-  padding:14px 16px;
-  background: rgba(122,171,106,0.06);
-  border: 1px solid rgba(122,171,106,0.2);
-  border-radius:6px; cursor:pointer;
-  transition: all 0.2s;
-}
-.student-toggle input { display:none; }
-.toggle-indicator {
-  width:36px; height:20px;
-  background: rgba(255,255,255,0.1);
-  border-radius:100px; position:relative;
-  transition: background 0.2s; flex-shrink:0;
-}
-.toggle-indicator::after {
-  content:''; position:absolute;
-  top:3px; left:3px;
-  width:14px; height:14px;
-  background: white; border-radius:50%;
-  transition: transform 0.2s;
-}
-.student-toggle.active .toggle-indicator { background: var(--sage); }
-.student-toggle.active .toggle-indicator::after { transform:translateX(16px); }
-.toggle-text { font-size:0.88rem; color: var(--mist); }
-.toggle-text strong { color: var(--sage); }
+.item-btn:hover:not(:disabled){background:var(--moss)}
+.item-btn:disabled{opacity:0.35;cursor:not-allowed}
+.item-btn.in-cart{background:rgba(122,171,106,0.14);color:var(--leaf);border:1px solid rgba(122,171,106,0.28)}
+
+/* RIGHT PANEL */
+.right-panel{position:sticky;top:72px;display:flex;flex-direction:column;gap:14px}
 
 /* CART */
-.cart-panel {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(122,171,106,0.2);
-  border-radius:12px; padding:28px;
-  position:sticky; top:84px;
+.cart-box{background:var(--forest);border-radius:12px;padding:18px;border:1px solid rgba(122,171,106,0.2)}
+.cart-header{display:flex;align-items:center;justify-content:space-between;padding-bottom:12px;border-bottom:1px solid rgba(122,171,106,0.14);margin-bottom:12px}
+.cart-title{font-family:'Bebas Neue',sans-serif;font-size:1.05rem;color:var(--white);letter-spacing:2px}
+.cart-count{background:var(--accent);color:white;width:19px;height:19px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.68rem;font-weight:700}
+.cart-empty{text-align:center;padding:24px 0;color:rgba(200,223,192,0.35)}
+.cart-empty-icon{font-size:1.8rem;margin-bottom:5px}
+.cart-empty-text{font-size:0.76rem;line-height:1.5}
+.cart-item{display:flex;align-items:center;gap:9px;padding:7px 0;border-bottom:1px solid rgba(122,171,106,0.08)}
+.cart-item:last-of-type{border-bottom:none}
+.ci-info{flex:1;min-width:0}
+.ci-name{font-size:0.78rem;font-weight:500;color:var(--mist);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ci-price{font-size:0.68rem;color:var(--sage);margin-top:1px}
+.ci-sub{font-size:0.75rem;font-weight:600;color:var(--white);white-space:nowrap}
+.qty-ctrl{display:flex;align-items:center;gap:3px}
+.qty-btn{
+  width:20px;height:20px;background:rgba(122,171,106,0.12);
+  border:1px solid rgba(122,171,106,0.18);border-radius:4px;
+  color:var(--sage);cursor:pointer;font-size:0.88rem;
+  display:flex;align-items:center;justify-content:center;transition:background 0.15s;
 }
-.cart-title {
-  font-family:'Bebas Neue',sans-serif;
-  font-size:1.5rem; color: var(--white);
-  letter-spacing:2px; margin-bottom:20px;
-  padding-bottom:16px;
-  border-bottom:1px solid rgba(122,171,106,0.2);
-}
-.cart-empty {
-  text-align:center; padding:40px 0;
-  color: rgba(200,223,192,0.4);
-}
-.cart-empty-icon { font-size:2.5rem; margin-bottom:8px; }
-.cart-empty-text { font-size:0.85rem; }
-.cart-item {
-  display:flex; align-items:center;
-  gap:12px; padding:10px 0;
-  border-bottom:1px solid rgba(122,171,106,0.1);
-}
-.cart-item-icon { font-size:1.4rem; }
-.cart-item-info { flex:1; }
-.cart-item-name { font-size:0.85rem; font-weight:500; color: var(--mist); }
-.cart-item-price { font-size:0.75rem; color: var(--sage); }
-.cart-qty {
-  display:flex; align-items:center; gap:6px;
-}
-.qty-btn {
-  width:24px; height:24px;
-  background: rgba(122,171,106,0.15);
-  border: 1px solid rgba(122,171,106,0.2);
-  border-radius:4px; color: var(--sage);
-  cursor:pointer; font-size:1rem;
-  display:flex; align-items:center; justify-content:center;
-  transition: background 0.15s;
-}
-.qty-btn:hover { background: rgba(122,171,106,0.3); }
-.qty-val { font-size:0.9rem; font-weight:600; color: var(--white); min-width:20px; text-align:center; }
-.cart-summary {
-  margin-top:20px; padding-top:16px;
-  border-top:1px solid rgba(122,171,106,0.2);
-}
-.summary-row {
-  display:flex; justify-content:space-between;
-  font-size:0.85rem; color: rgba(200,223,192,0.7);
-  margin-bottom:8px;
-}
-.summary-row.total {
-  font-family:'Bebas Neue',sans-serif;
-  font-size:1.3rem; color: var(--white); letter-spacing:1px;
-  margin-top:12px; padding-top:12px;
-  border-top:1px solid rgba(122,171,106,0.2);
-}
-.summary-row.dp { color: var(--accent); font-weight:600; }
-.discount-badge {
-  background: rgba(122,171,106,0.1);
-  border:1px solid rgba(122,171,106,0.2);
-  border-radius:4px; padding:6px 12px;
-  font-size:0.78rem; color: var(--sage);
-  margin-bottom:12px; display:none;
-}
+.qty-btn:hover{background:rgba(122,171,106,0.25)}
+.qty-num{font-size:0.82rem;font-weight:700;color:var(--white);min-width:15px;text-align:center}
 
-/* MODAL */
-.modal-overlay {
-  display:none; position:fixed; inset:0;
-  background: rgba(0,0,0,0.8); z-index:1000;
-  align-items:center; justify-content:center;
-  padding:20px;
+/* SUMMARY */
+.summary-box{background:rgba(255,255,255,0.04);border-radius:7px;padding:11px 13px;margin-top:11px;border:1px solid rgba(122,171,106,0.1)}
+.sum-row{display:flex;justify-content:space-between;font-size:0.77rem;color:rgba(200,223,192,0.55);margin-bottom:5px}
+.sum-row.disc{color:var(--sage)}
+.sum-total{display:flex;justify-content:space-between;align-items:baseline;margin-top:9px;padding-top:9px;border-top:1px solid rgba(122,171,106,0.18)}
+.sum-total-lbl{font-family:'Bebas Neue',sans-serif;font-size:0.95rem;color:var(--white);letter-spacing:1px}
+.sum-total-val{font-family:'Bebas Neue',sans-serif;font-size:1.45rem;color:var(--white);letter-spacing:1px}
+.sum-dp{display:flex;justify-content:space-between;background:rgba(212,132,10,0.09);border:1px solid rgba(212,132,10,0.18);border-radius:6px;padding:7px 10px;margin-top:7px}
+.sum-dp-lbl{font-size:0.72rem;color:rgba(212,132,10,0.8)}
+.sum-dp-val{font-size:0.86rem;font-weight:700;color:var(--accent)}
+
+/* FORM */
+.form-box{background:var(--white);border-radius:12px;padding:18px;border:1.5px solid var(--sand)}
+.form-box-title{font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:2px;color:var(--forest);margin-bottom:14px}
+.form-row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.fg{margin-bottom:10px}
+.fg:last-child{margin-bottom:0}
+.fl{display:block;font-size:0.67rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--stone);margin-bottom:4px}
+.fi{
+  width:100%;padding:8px 11px;
+  background:var(--cream);border:1.5px solid var(--sand);
+  border-radius:7px;color:var(--forest);font-size:0.86rem;
+  font-family:'DM Sans',sans-serif;transition:border-color 0.2s;
 }
-.modal-overlay.open { display:flex; }
-.modal {
-  background: var(--cream);
-  border-radius:12px; padding:40px;
-  max-width:480px; width:100%;
-  max-height:90vh; overflow-y:auto;
+.fi:focus{outline:none;border-color:var(--sage)}
+.student-row{
+  display:flex;align-items:center;gap:9px;
+  padding:9px 11px;background:var(--cream);
+  border:1.5px solid var(--sand);border-radius:7px;
+  cursor:pointer;transition:border-color 0.2s;
 }
-.modal-icon { font-size:3rem; text-align:center; margin-bottom:16px; }
-.modal-title {
-  font-family:'Bebas Neue',sans-serif;
-  font-size:2rem; color: var(--forest);
-  letter-spacing:2px; text-align:center;
-  margin-bottom:8px;
+.student-row:hover{border-color:var(--sage)}
+.tog-track{width:30px;height:17px;background:rgba(90,90,82,0.18);border-radius:100px;position:relative;transition:background 0.2s;flex-shrink:0}
+.tog-track::after{content:'';position:absolute;top:2px;left:2px;width:13px;height:13px;background:white;border-radius:50%;transition:transform 0.2s;box-shadow:0 1px 3px rgba(0,0,0,0.18)}
+.student-row.on .tog-track{background:var(--sage)}
+.student-row.on .tog-track::after{transform:translateX(13px)}
+.tog-txt{font-size:0.8rem;color:var(--stone)}
+.tog-txt strong{color:var(--leaf)}
+
+.submit-btn{
+  width:100%;padding:13px;margin-top:12px;
+  background:var(--sage);color:var(--forest);
+  border:none;border-radius:8px;font-size:0.88rem;
+  font-weight:700;letter-spacing:1px;text-transform:uppercase;
+  cursor:pointer;transition:all 0.2s;font-family:'DM Sans',sans-serif;
+  display:flex;align-items:center;justify-content:center;gap:7px;
 }
-.modal-body { font-size:0.9rem; color: var(--stone); line-height:1.7; }
-.order-summary {
-  background: var(--white);
-  border:1px solid var(--sand);
-  border-radius:8px; padding:20px;
-  margin:20px 0; font-size:0.85rem;
-}
-.order-summary-row {
-  display:flex; justify-content:space-between;
-  padding:6px 0; border-bottom:1px solid var(--sand);
-  color: var(--stone);
-}
-.order-summary-row:last-child { border-bottom:none; }
-.order-summary-row.highlight { color: var(--forest); font-weight:600; }
-.wa-msg {
-  background: #dcf8c6;
-  border-radius:8px; padding:16px;
-  font-size:0.78rem; line-height:1.6;
-  color: #333; white-space:pre-wrap;
-  font-family:monospace; margin:16px 0;
-  max-height:200px; overflow-y:auto;
-}
-.btn-wa {
-  display:flex; align-items:center; justify-content:center;
-  gap:10px; width:100%;
-  background: #25D366; color: white;
-  border:none; border-radius:8px;
-  padding:16px; font-size:1rem;
-  font-weight:700; cursor:pointer;
-  text-decoration:none;
-  font-family:'DM Sans',sans-serif;
-  transition: background 0.2s;
-}
-.btn-wa:hover { background: #128C7E; }
+.submit-btn:hover:not(:disabled){background:var(--mist)}
+.submit-btn:disabled{opacity:0.5;cursor:not-allowed}
 
 /* HOW IT WORKS */
-#cara-sewa { background: var(--white); }
-.steps-grid {
-  display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:24px; margin-top:48px;
-}
-.step-card {
-  text-align:center; padding:32px 20px;
-  border:1px solid var(--sand);
-  border-radius:8px; position:relative;
-}
-.step-num {
-  font-family:'Bebas Neue',sans-serif;
-  font-size:4rem; color: rgba(74,124,74,0.12);
-  position:absolute; top:10px; right:16px;
-  line-height:1;
-}
-.step-icon { font-size:2.2rem; margin-bottom:16px; }
-.step-title { font-weight:700; margin-bottom:8px; }
-.step-desc { font-size:0.85rem; color: var(--stone); line-height:1.6; }
+.how-section{padding:52px 5%;background:var(--white)}
+.how-title{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;letter-spacing:2px;margin-bottom:28px;text-align:center}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:14px}
+.step{text-align:center;padding:22px 14px;border:1.5px solid var(--sand);border-radius:10px;position:relative;background:var(--cream)}
+.step-num{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:rgba(74,124,74,0.1);position:absolute;top:7px;right:11px;line-height:1}
+.step-icon{font-size:1.7rem;margin-bottom:9px}
+.step-title{font-weight:700;font-size:0.86rem;margin-bottom:5px}
+.step-desc{font-size:0.76rem;color:var(--stone);line-height:1.5}
 
 /* CONTACT */
-#kontak { background: var(--moss); }
-.contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; }
-.contact-info { color: var(--mist); }
-.contact-item {
-  display:flex; align-items:center; gap:16px;
-  padding:16px 0; border-bottom:1px solid rgba(122,171,106,0.2);
+.contact-section{background:var(--moss);padding:52px 5%}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.contact-info{color:var(--mist)}
+.contact-item{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid rgba(122,171,106,0.18)}
+.contact-item:last-child{border-bottom:none}
+.contact-icon{font-size:1.4rem;width:36px;text-align:center}
+.contact-detail small{font-size:0.68rem;text-transform:uppercase;letter-spacing:1px;color:var(--sage)}
+.contact-detail p{font-size:0.96rem;font-weight:500;color:var(--white);margin-top:2px}
+.section-tag{display:inline-block;font-size:0.68rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--sage);margin-bottom:10px}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,4vw,3rem);line-height:1;color:var(--forest);margin-bottom:6px;letter-spacing:1px}
+.section-title.light{color:var(--white)}
+.section-sub{color:var(--stone);font-size:0.95rem;font-weight:300;max-width:480px;line-height:1.7}
+.btn-primary{display:inline-flex;align-items:center;gap:7px;background:var(--sage);color:var(--forest);border:none;border-radius:4px;padding:13px 26px;font-size:0.88rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all 0.2s;text-decoration:none;font-family:'DM Sans',sans-serif}
+.btn-primary:hover{background:var(--mist);transform:translateY(-2px)}
+
+/* FOOTER */
+footer{background:var(--forest);padding:28px 5%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.footer-logo{font-family:'Bebas Neue',sans-serif;color:var(--sage);font-size:1.2rem;letter-spacing:3px}
+.footer-links{display:flex;gap:18px}
+.footer-links a{color:rgba(200,223,192,0.55);text-decoration:none;font-size:0.8rem;transition:color 0.2s}
+.footer-links a:hover{color:var(--sage)}
+
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.78);z-index:500;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.open{display:flex}
+.modal{background:var(--cream);border-radius:14px;padding:34px;max-width:460px;width:100%;max-height:90vh;overflow-y:auto}
+.modal-icon{font-size:2.4rem;text-align:center;margin-bottom:11px}
+.modal-title{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;text-align:center;letter-spacing:2px;margin-bottom:6px;color:var(--forest)}
+.modal-body{font-size:0.84rem;color:var(--stone);line-height:1.7}
+.order-summary{background:var(--white);border:1px solid var(--sand);border-radius:8px;padding:15px;margin:15px 0}
+.orow{display:flex;justify-content:space-between;font-size:0.8rem;color:var(--stone);padding:5px 0;border-bottom:1px solid var(--sand)}
+.orow:last-child{border-bottom:none}
+.orow.hl{color:var(--forest);font-weight:600}
+.wa-msg{background:#dcf8c6;border-radius:8px;padding:13px;font-size:0.74rem;line-height:1.6;color:#333;white-space:pre-wrap;font-family:monospace;margin:12px 0;max-height:190px;overflow-y:auto}
+.btn-wa{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;background:#25D366;color:white;border:none;border-radius:8px;padding:14px;font-size:0.92rem;font-weight:700;cursor:pointer;text-decoration:none;font-family:'DM Sans',sans-serif;transition:background 0.2s}
+.btn-wa:hover{background:#128C7E}
+.btn-close{width:100%;margin-top:8px;padding:10px;background:transparent;border:1.5px solid var(--sand);border-radius:8px;cursor:pointer;font-family:'DM Sans',sans-serif;color:var(--stone);font-size:0.8rem}
+
+/* UTIL */
+.loading{display:flex;align-items:center;justify-content:center;gap:8px;padding:30px;color:var(--stone);font-size:0.83rem}
+.spin{width:17px;height:17px;border:2px solid var(--sand);border-top-color:var(--sage);border-radius:50%;animation:spin 0.8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.toast{position:fixed;bottom:20px;right:20px;background:var(--forest);color:var(--sage);padding:10px 17px;border-radius:8px;font-size:0.8rem;font-weight:500;border:1px solid rgba(122,171,106,0.28);transform:translateY(60px);opacity:0;transition:all 0.3s;z-index:9999}
+.toast.show{transform:translateY(0);opacity:1}
+
+@media(max-width:960px){
+  .content-grid{grid-template-columns:1fr}
+  .right-panel{position:static}
+  .form-row2{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
 }
-.contact-item:last-child { border-bottom:none; }
-.contact-icon { font-size:1.5rem; width:40px; text-align:center; }
-.contact-detail small { font-size:0.72rem; text-transform:uppercase; letter-spacing:1px; color: var(--sage); }
-.contact-detail p { font-size:1rem; font-weight:500; color: var(--white); margin-top:2px; }
-
-/* LOADING */
-.loading { display:flex; align-items:center; justify-content:center; gap:10px; padding:40px; color: var(--stone); }
-.spinner { width:20px; height:20px; border:2px solid var(--sand); border-top-color: var(--sage); border-radius:50%; animation:spin 0.8s linear infinite; }
-@keyframes spin { to{transform:rotate(360deg)} }
-
-/* TOAST */
-.toast {
-  position:fixed; bottom:24px; right:24px;
-  background: var(--forest); color: var(--sage);
-  padding:12px 20px; border-radius:8px;
-  font-size:0.85rem; font-weight:500;
-  border:1px solid rgba(122,171,106,0.3);
-  transform:translateY(80px); opacity:0;
-  transition: all 0.3s; z-index:9999;
-}
-.toast.show { transform:translateY(0); opacity:1; }
-
-@media(max-width:768px){
-  .booking-layout { grid-template-columns:1fr; }
-  .form-row { grid-template-columns:1fr; }
-  .contact-grid { grid-template-columns:1fr; }
-  .stats-bar { flex-wrap:wrap; }
-  .stat-item { flex:1 1 50%; }
-  .cart-panel { position:static; }
-  nav .nav-links { display:none; }
+@media(max-width:600px){
+  nav .nav-links{display:none}
+  .hero{padding:80px 5% 32px}
+  .date-bar{gap:10px}
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-logo">OUTDOOR<span>.</span>RENTAL</div>
   <div class="nav-links">
-    <a href="#catalog">Katalog</a>
-    <a href="#booking">Booking</a>
+    <a href="#order">Booking</a>
     <a href="#cara-sewa">Cara Sewa</a>
     <a href="#kontak">Kontak</a>
+    <a href="admin.html">Admin</a>
   </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-content">
-    <div class="hero-badge">⛺ Alat Outdoor Berkualitas</div>
-    <h1>PETUALANGAN<br><em>TANPA</em><br>BATAS</h1>
-    <p class="hero-sub">Sewa alat outdoor lengkap — tenda, carrier, sleeping bag, kompor, dan lebih banyak lagi. Harga terjangkau, kondisi terjaga.</p>
-    <div class="hero-ctas">
-      <a href="#catalog" class="btn-primary">🎒 Lihat Katalog</a>
-      <a href="#booking" class="btn-outline">📅 Booking Sekarang</a>
+<div class="hero">
+  <div class="hero-text">
+    <h1>SEWA ALAT<br><em>OUTDOOR</em></h1>
+    <p>Tenda, carrier, sleeping bag, kompor & lebih. Harga terjangkau, kondisi terjaga.</p>
+    <div class="hero-badges">
+      <span class="hbadge">⛰️ Stok Real-time</span>
+      <span class="hbadge">🎓 Diskon Mahasiswa 10%</span>
+      <span class="hbadge">⚡ Konfirmasi via WA</span>
     </div>
   </div>
-</section>
-
-<!-- STATS -->
-<div class="stats-bar">
-  <div class="stat-item"><div class="stat-num" id="statItems">10+</div><div class="stat-label">Jenis Alat</div></div>
-  <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">Kondisi Terjaga</div></div>
-  <div class="stat-item"><div class="stat-num">🎓</div><div class="stat-label">Diskon Mahasiswa 10%</div></div>
-  <div class="stat-item"><div class="stat-num">⚡</div><div class="stat-label">Respon Cepat</div></div>
 </div>
 
-<!-- CATALOG -->
-<section id="catalog">
-  <div class="catalog-header">
-    <div>
-      <div class="section-tag">Katalog</div>
-      <div class="section-title">SEMUA ALAT</div>
-      <div class="section-sub">Stok real-time, langsung dari sistem kami</div>
-    </div>
-    <div class="filter-tabs" id="filterTabs">
-      <button class="filter-tab active" data-cat="semua">Semua</button>
-    </div>
-  </div>
-  <div class="items-grid" id="itemsGrid">
-    <div class="loading"><div class="spinner"></div> Memuat katalog...</div>
-  </div>
-</section>
+<div class="main-wrap" id="order">
 
-<!-- BOOKING -->
-<section id="booking">
-  <div class="booking-layout">
-    <div>
-      <div class="section-tag">Booking</div>
-      <div class="section-title light">PESAN SEKARANG</div>
-      <div class="section-sub" style="color:rgba(200,223,192,0.6);margin-bottom:36px;">Isi form di bawah, kami akan konfirmasi via WhatsApp.</div>
+  <!-- DATE BAR -->
+  <div class="date-bar">
+    <div class="date-bar-title">📅 TANGGAL SEWA</div>
+    <div class="date-field">
+      <span class="date-lbl">Ambil</span>
+      <input type="date" class="date-inp" id="startDate">
+    </div>
+    <div class="date-arrow">→</div>
+    <div class="date-field">
+      <span class="date-lbl">Kembali</span>
+      <input type="date" class="date-inp" id="endDate">
+    </div>
+    <div class="date-dur" id="durationDisplay">Pilih tanggal</div>
+  </div>
 
-      <div class="form-card">
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label">Nama Lengkap *</label>
-            <input type="text" class="form-input" id="clientName" placeholder="Nama kamu">
-          </div>
-          <div class="form-group">
-            <label class="form-label">Nomor WhatsApp *</label>
-            <input type="tel" class="form-input" id="clientWA" placeholder="08xxxxxxxxxx">
+  <div class="content-grid">
+
+    <!-- CATALOG -->
+    <div>
+      <div class="section-head">
+        <div class="section-lbl">🎒 PILIH ALAT</div>
+        <div class="filter-tabs" id="filterTabs">
+          <button class="filter-tab active" data-cat="semua" onclick="filterCat('semua',this)">Semua</button>
+        </div>
+      </div>
+      <div class="items-grid" id="itemsGrid">
+        <div class="loading"><div class="spin"></div> Memuat katalog...</div>
+      </div>
+    </div>
+
+    <!-- RIGHT PANEL -->
+    <div class="right-panel">
+
+      <!-- CART -->
+      <div class="cart-box">
+        <div class="cart-header">
+          <div class="cart-title">🛒 KERANJANG</div>
+          <div class="cart-count" id="cartCount">0</div>
+        </div>
+        <div id="cartItems">
+          <div class="cart-empty">
+            <div class="cart-empty-icon">🎒</div>
+            <div class="cart-empty-text">Belum ada alat dipilih.<br>Klik "+ Tambah" dari katalog!</div>
           </div>
         </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label">Tanggal Ambil *</label>
-            <input type="date" class="form-input" id="startDate">
+        <div id="cartSummary" style="display:none">
+          <div class="summary-box">
+            <div class="sum-row"><span>Subtotal</span><span id="sumSubtotal">Rp 0</span></div>
+            <div class="sum-row" id="sumDurRow" style="display:none"><span>Durasi</span><span id="sumDur">—</span></div>
+            <div class="sum-row disc" id="sumDiscRow" style="display:none"><span>🎓 Diskon 10%</span><span id="sumDisc">-Rp 0</span></div>
+            <div class="sum-total">
+              <span class="sum-total-lbl">TOTAL</span>
+              <span class="sum-total-val" id="sumTotal">Rp 0</span>
+            </div>
           </div>
-          <div class="form-group">
-            <label class="form-label">Tanggal Kembali *</label>
-            <input type="date" class="form-input" id="endDate">
+          <div class="sum-dp" id="sumDpBox" style="display:none">
+            <span class="sum-dp-lbl">💳 DP 30% sekarang</span>
+            <span class="sum-dp-val" id="sumDp">Rp 0</span>
           </div>
         </div>
-        <div class="form-group">
-          <label class="form-label">Catatan (opsional)</label>
-          <input type="text" class="form-input" id="orderNotes" placeholder="Titik ambil, catatan khusus, dll">
+      </div>
+
+      <!-- FORM -->
+      <div class="form-box">
+        <div class="form-box-title">📝 DATA PEMESAN</div>
+        <div class="form-row2">
+          <div class="fg">
+            <label class="fl">Nama Lengkap *</label>
+            <input type="text" class="fi" id="clientName" placeholder="Nama kamu">
+          </div>
+          <div class="fg">
+            <label class="fl">Nomor WhatsApp *</label>
+            <input type="tel" class="fi" id="clientWA" placeholder="08xxxxxxxxxx">
+          </div>
         </div>
-        <div class="form-group">
-          <label class="student-toggle" id="studentToggle">
-            <input type="checkbox" id="isStudent">
-            <div class="toggle-indicator"></div>
-            <div class="toggle-text">Saya <strong>Mahasiswa</strong> (dapat diskon 10%)</div>
-          </label>
+        <div class="fg">
+          <label class="fl">Catatan (opsional)</label>
+          <input type="text" class="fi" id="orderNotes" placeholder="Titik ambil, catatan khusus, dll">
         </div>
-        <button class="btn-primary" id="submitOrder" style="width:100%;justify-content:center;" onclick="submitOrder()">
-          🚀 Kirim Booking
+        <div class="fg">
+          <div class="student-row" id="studentRow" onclick="toggleStudent()">
+            <div class="tog-track" id="togTrack"></div>
+            <div class="tog-txt">Saya <strong>Mahasiswa</strong> — dapat diskon 10%</div>
+          </div>
+        </div>
+        <button class="submit-btn" id="submitBtn" onclick="submitOrder()">
+          🚀 KIRIM BOOKING
         </button>
       </div>
-    </div>
 
-    <!-- CART -->
-    <div class="cart-panel">
-      <div class="cart-title">🛒 KERANJANG</div>
-      <div id="cartContent">
-        <div class="cart-empty">
-          <div class="cart-empty-icon">🎒</div>
-          <div class="cart-empty-text">Belum ada alat dipilih.<br>Pilih dari katalog di atas!</div>
-        </div>
-      </div>
     </div>
   </div>
-</section>
+</div>
 
 <!-- CARA SEWA -->
-<section id="cara-sewa">
-  <div class="section-tag">Proses</div>
-  <div class="section-title">CARA SEWA</div>
-  <div class="steps-grid">
-    <div class="step-card">
-      <div class="step-num">1</div>
-      <div class="step-icon">🔍</div>
-      <div class="step-title">Pilih Alat</div>
-      <div class="step-desc">Browse katalog, pilih alat yang kamu butuhkan, cek ketersediaan real-time.</div>
-    </div>
-    <div class="step-card">
-      <div class="step-num">2</div>
-      <div class="step-icon">📝</div>
-      <div class="step-title">Isi Form Booking</div>
-      <div class="step-desc">Isi nama, nomor WA, dan tanggal sewa. Mahasiswa dapat diskon 10%!</div>
-    </div>
-    <div class="step-card">
-      <div class="step-num">3</div>
-      <div class="step-icon">💬</div>
-      <div class="step-title">Konfirmasi WA</div>
-      <div class="step-desc">Kami akan kirim rincian ke WA kamu. Bayar DP 30% untuk konfirmasi booking.</div>
-    </div>
-    <div class="step-card">
-      <div class="step-num">4</div>
-      <div class="step-icon">🤝</div>
-      <div class="step-title">Ambil & Jaminan</div>
-      <div class="step-desc">Ambil alat di lokasi, lunasi 70%, dan titipkan KTP/KK/Ijazah sebagai jaminan.</div>
-    </div>
-    <div class="step-card">
-      <div class="step-num">5</div>
-      <div class="step-icon">⛺</div>
-      <div class="step-title">Petualangan!</div>
-      <div class="step-desc">Nikmati petualangan kamu dengan alat berkualitas kami.</div>
-    </div>
-    <div class="step-card">
-      <div class="step-num">6</div>
-      <div class="step-icon">🔄</div>
-      <div class="step-title">Kembalikan</div>
-      <div class="step-desc">Kembalikan alat tepat waktu, kami kembalikan jaminan kamu.</div>
-    </div>
+<div class="how-section" id="cara-sewa">
+  <div class="how-title">CARA SEWA</div>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-icon">🔍</div><div class="step-title">Pilih Tanggal & Alat</div><div class="step-desc">Tentukan tanggal sewa, lalu pilih alat dari katalog. Stok real-time.</div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-icon">📝</div><div class="step-title">Isi Data & Kirim</div><div class="step-desc">Isi nama & nomor WA, klik Kirim Booking. Mahasiswa diskon 10%.</div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-icon">💬</div><div class="step-title">Konfirmasi WA</div><div class="step-desc">Rincian dikirim otomatis ke WA kami. Bayar DP 30% untuk konfirmasi.</div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-icon">🤝</div><div class="step-title">Ambil & Jaminan</div><div class="step-desc">Ambil alat, lunasi 70%, titipkan KTP/KK/Ijazah sebagai jaminan.</div></div>
+    <div class="step"><div class="step-num">5</div><div class="step-icon">⛰️</div><div class="step-title">Petualangan!</div><div class="step-desc">Nikmati petualangan dengan alat berkualitas kami.</div></div>
+    <div class="step"><div class="step-num">6</div><div class="step-icon">🔄</div><div class="step-title">Kembalikan</div><div class="step-desc">Kembalikan alat tepat waktu, jaminan dikembalikan.</div></div>
   </div>
-</section>
+</div>
 
 <!-- KONTAK -->
-<section id="kontak">
+<div class="contact-section" id="kontak">
   <div class="contact-grid">
     <div>
       <div class="section-tag">Hubungi Kami</div>
       <div class="section-title light">ADA PERTANYAAN?</div>
-      <div class="section-sub" style="color:rgba(200,223,192,0.6);margin-bottom:32px;">
-        Jangan ragu kontak kami. Kami siap bantu kamu planning trip outdoor!
-      </div>
-      <a id="waContactBtn" href="#" target="_blank" class="btn-primary" style="display:inline-flex;">
-        💬 Chat via WhatsApp
-      </a>
+      <div class="section-sub" style="color:rgba(200,223,192,0.6);margin-bottom:28px">Jangan ragu kontak kami. Kami siap bantu kamu planning trip outdoor!</div>
+      <a id="waContactBtn" href="#" target="_blank" class="btn-primary">💬 Chat via WhatsApp</a>
     </div>
     <div class="contact-info">
       <div class="contact-item">
         <div class="contact-icon">📱</div>
-        <div class="contact-detail">
-          <small>WhatsApp</small>
-          <p id="displayWA">Loading...</p>
-        </div>
+        <div class="contact-detail"><small>WhatsApp</small><p id="displayWA">—</p></div>
       </div>
       <div class="contact-item">
         <div class="contact-icon">📸</div>
-        <div class="contact-detail">
-          <small>Instagram</small>
-          <p id="displayIG">Loading...</p>
-        </div>
+        <div class="contact-detail"><small>Instagram</small><p id="displayIG">—</p></div>
       </div>
       <div class="contact-item">
         <div class="contact-icon">⏰</div>
-        <div class="contact-detail">
-          <small>Jam Operasional</small>
-          <p>Setiap Hari, 08.00 – 21.00</p>
-        </div>
+        <div class="contact-detail"><small>Jam Operasional</small><p>Setiap Hari, 08.00 – 21.00</p></div>
       </div>
     </div>
   </div>
-</section>
+</div>
+
+<footer>
+  <div class="footer-logo">⛰️ OUTDOOR.RENTAL 🌲</div>
+  <div class="footer-links">
+    <a id="waFooterBtn" href="#">💬 WhatsApp</a>
+    <a id="igFooterBtn" href="#">📸 Instagram</a>
+  </div>
+</footer>
 
 <!-- SUCCESS MODAL -->
 <div class="modal-overlay" id="successModal">
   <div class="modal">
     <div class="modal-icon">🎉</div>
-    <div class="modal-title">BOOKING DIKIRIM!</div>
+    <div class="modal-title">BOOKING TERKIRIM!</div>
     <div class="modal-body">
-      <p style="text-align:center;margin-bottom:16px;color:#666">Order kamu sudah kami terima. Klik tombol di bawah untuk lanjut konfirmasi via WhatsApp.</p>
+      <p style="text-align:center;margin-bottom:12px;color:#666">Klik tombol di bawah untuk lanjut konfirmasi via WhatsApp.</p>
       <div class="order-summary" id="modalSummary"></div>
-      <p style="font-size:0.82rem;color:#888;margin-bottom:8px">Preview pesan WA:</p>
+      <p style="font-size:0.73rem;color:#999;margin-bottom:6px">Preview pesan WA:</p>
       <div class="wa-msg" id="waPreview"></div>
       <a class="btn-wa" id="waConfirmBtn" href="#" target="_blank">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Lanjut Konfirmasi via WhatsApp
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Konfirmasi via WhatsApp
       </a>
-      <button onclick="closeModal()" style="width:100%;margin-top:10px;padding:12px;background:transparent;border:1.5px solid #ddd;border-radius:8px;cursor:pointer;font-family:'DM Sans',sans-serif;color:#666;font-size:0.85rem;">
-        Tutup
-      </button>
+      <button class="btn-close" onclick="closeModal()">Tutup</button>
     </div>
   </div>
 </div>
@@ -706,10 +466,10 @@ section { padding: 80px 5%; }
 
 <script>
 // ============================================================
-// KONFIGURASI - GANTI URL INI DENGAN URL APPS SCRIPT KAMU
+// KONFIGURASI — dari file asli kamu
 // ============================================================
 const API_URL = 'https://script.google.com/macros/s/AKfycbzb8TNcTQLwV6bopVsGcVbhvNAygecguGXplJ7tvSnhxhzQYgT1T5ga39Jes5rLgZ42sg/exec';
-const WA_NUMBER = '+6281383113200'; // Ganti dengan nomor WA kamu (tanpa +)
+const WA_NUMBER = '+6281383113200';
 
 // ============================================================
 // STATE
@@ -719,52 +479,29 @@ let cart = {};
 let activeFilter = 'semua';
 let startDate = '', endDate = '';
 let isStudent = false;
-let orderResult = null;
 
 // ============================================================
 // INIT
 // ============================================================
 document.addEventListener('DOMContentLoaded', () => {
-  setMinDates();
-  loadItems();
-  setupStudentToggle();
-  setupDateListeners();
-  document.getElementById('displayWA').textContent = formatWADisplay(WA_NUMBER);
-  document.getElementById('waContactBtn').href = `https://wa.me/${WA_NUMBER}`;
-});
-
-function setMinDates() {
   const today = new Date().toISOString().split('T')[0];
   document.getElementById('startDate').min = today;
   document.getElementById('endDate').min = today;
-}
-
-function setupDateListeners() {
-  document.getElementById('startDate').addEventListener('change', (e) => {
+  document.getElementById('startDate').addEventListener('change', e => {
     startDate = e.target.value;
     document.getElementById('endDate').min = startDate;
-    if (endDate && endDate <= startDate) {
-      endDate = '';
-      document.getElementById('endDate').value = '';
-    }
-    updateCart();
+    if (endDate && endDate <= startDate) { endDate = ''; document.getElementById('endDate').value = ''; }
+    updateAll();
   });
-  document.getElementById('endDate').addEventListener('change', (e) => {
-    endDate = e.target.value;
-    updateCart();
-  });
-}
+  document.getElementById('endDate').addEventListener('change', e => { endDate = e.target.value; updateAll(); });
 
-function setupStudentToggle() {
-  const toggle = document.getElementById('studentToggle');
-  const checkbox = document.getElementById('isStudent');
-  toggle.addEventListener('click', () => {
-    isStudent = !isStudent;
-    checkbox.checked = isStudent;
-    toggle.classList.toggle('active', isStudent);
-    updateCart();
-  });
-}
+  const waClean = WA_NUMBER.replace(/\D/g,'');
+  document.getElementById('displayWA').textContent = WA_NUMBER;
+  document.getElementById('waContactBtn').href = `https://wa.me/${waClean}`;
+  document.getElementById('waFooterBtn').href = `https://wa.me/${waClean}`;
+
+  loadItems();
+});
 
 // ============================================================
 // LOAD ITEMS
@@ -773,62 +510,49 @@ async function loadItems() {
   try {
     const res = await fetch(`${API_URL}?action=getItems`);
     allItems = await res.json();
-    renderCatalog();
     buildFilters();
-    document.getElementById('statItems').textContent = allItems.length + '+';
+    renderCatalog();
   } catch(e) {
-    document.getElementById('itemsGrid').innerHTML = 
-      `<div style="color:#666;padding:40px;text-align:center">
-        ⚠️ Gagal memuat katalog. Pastikan API sudah dikonfigurasi.<br>
-        <small style="font-size:0.75rem;margin-top:8px;display:block">Error: ${e.message}</small>
-      </div>`;
+    document.getElementById('itemsGrid').innerHTML =
+      `<div style="padding:30px;color:var(--stone);font-size:0.82rem;grid-column:1/-1">⚠️ Gagal memuat katalog. Pastikan API URL sudah dikonfigurasi.<br><small style="opacity:0.6">${e.message}</small></div>`;
   }
 }
 
 function buildFilters() {
   const cats = ['Semua', ...new Set(allItems.map(i => i['Kategori']))];
-  const tabs = document.getElementById('filterTabs');
-  tabs.innerHTML = cats.map(c => 
-    `<button class="filter-tab ${c==='Semua'?'active':''}" data-cat="${c.toLowerCase()}" onclick="filterCat('${c.toLowerCase()}')">${c}</button>`
+  document.getElementById('filterTabs').innerHTML = cats.map(c =>
+    `<button class="filter-tab ${c==='Semua'?'active':''}" data-cat="${c.toLowerCase()}" onclick="filterCat('${c.toLowerCase()}',this)">${c}</button>`
   ).join('');
 }
 
-function filterCat(cat) {
+function filterCat(cat, el) {
   activeFilter = cat;
-  document.querySelectorAll('.filter-tab').forEach(t => {
-    t.classList.toggle('active', t.dataset.cat === cat);
-  });
+  document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
   renderCatalog();
 }
 
 function renderCatalog() {
-  const filtered = activeFilter === 'semua' ? allItems :
-    allItems.filter(i => i['Kategori'].toLowerCase() === activeFilter);
-  
-  const emojiMap = {
-    'Tenda':'⛺', 'Tidur':'🛌', 'Tas':'🎒', 'Masak':'🍳',
-    'Lampu':'🔦', 'Aksesoris':'🧰', 'Pakaian':'👕', 'Air':'💧'
-  };
+  const emojiMap = {'Tenda':'⛺','Tidur':'🛌','Tas':'🎒','Masak':'🍳','Lampu':'🔦','Aksesoris':'🧰','Pakaian':'👕','Air':'💧'};
+  const filtered = activeFilter === 'semua' ? allItems : allItems.filter(i => i['Kategori'].toLowerCase() === activeFilter);
 
   document.getElementById('itemsGrid').innerHTML = filtered.map(item => {
-    const avail = item['Stok Tersedia'] || 0;
-    const stockClass = avail <= 0 ? 'stock-none' : avail <= 1 ? 'stock-low' : 'stock-ok';
-    const stockText = avail <= 0 ? 'Habis' : avail <= 1 ? 'Hampir habis' : `${avail} tersedia`;
-    const emoji = emojiMap[item['Kategori']] || '🏕️';
-    const cartQty = cart[item['ID']]?.quantity || 0;
-    
-    return `<div class="item-card" id="card-${item['ID']}">
+    const avail = Number(item['Stok Tersedia']) || 0;
+    const sc = avail <= 0 ? 's-none' : avail === 1 ? 's-low' : 's-ok';
+    const st = avail <= 0 ? 'Habis' : avail === 1 ? '1 tersisa' : `${avail} tersedia`;
+    const qty = cart[item['ID']]?.quantity || 0;
+    return `<div class="item-card">
       <div class="item-img">
-        ${emoji}
-        <span class="item-stock-badge ${stockClass}">${stockText}</span>
+        ${emojiMap[item['Kategori']] || '⛰️'}
+        <span class="stock-badge ${sc}">${st}</span>
       </div>
       <div class="item-body">
         <div class="item-cat">${item['Kategori']}</div>
         <div class="item-name">${item['Nama Barang']}</div>
-        <div class="item-price">${formatRp(item['Harga/Hari'])} <span class="item-price-sub">/hari</span></div>
-        ${item['Catatan'] ? `<div style="font-size:0.72rem;color:#888;margin-top:4px">${item['Catatan']}</div>` : ''}
-        <button class="item-add" onclick="addToCart('${item['ID']}')" ${avail<=0?'disabled':''}>
-          ${avail<=0 ? '❌ Tidak Tersedia' : cartQty>0 ? `✓ Di Keranjang (${cartQty})` : '+ Tambah ke Keranjang'}
+        <div class="item-price">${formatRp(item['Harga/Hari'])} <sub>/hari</sub></div>
+        ${item['Catatan'] ? `<div class="item-note">${item['Catatan']}</div>` : ''}
+        <button class="item-btn ${qty>0?'in-cart':''}" onclick="addToCart('${item['ID']}')" ${avail<=0?'disabled':''}>
+          ${avail<=0 ? '✗ Tidak Tersedia' : qty>0 ? `✓ Di Keranjang (${qty})` : '+ Tambah'}
         </button>
       </div>
     </div>`;
@@ -838,183 +562,160 @@ function renderCatalog() {
 // ============================================================
 // CART
 // ============================================================
-function addToCart(itemId) {
-  const item = allItems.find(i => i['ID'] === itemId);
+function addToCart(id) {
+  const item = allItems.find(i => i['ID'] === id);
   if (!item) return;
-  
-  if (cart[itemId]) {
-    const maxAvail = item['Stok Tersedia'] || 0;
-    if (cart[itemId].quantity >= maxAvail) {
-      showToast('Stok tidak mencukupi!');
-      return;
-    }
-    cart[itemId].quantity++;
+  const max = Number(item['Stok Tersedia']) || 0;
+  if (cart[id]) {
+    if (cart[id].quantity >= max) { showToast('Stok tidak mencukupi!'); return; }
+    cart[id].quantity++;
   } else {
-    cart[itemId] = {
-      itemId: item['ID'],
-      itemName: item['Nama Barang'],
-      pricePerDay: item['Harga/Hari'],
-      quantity: 1
-    };
+    cart[id] = { itemId: id, itemName: item['Nama Barang'], pricePerDay: Number(item['Harga/Hari']), quantity: 1 };
   }
-  updateCart();
-  renderCatalog();
+  updateAll();
   showToast(`${item['Nama Barang']} ditambahkan!`);
-  document.getElementById('booking').scrollIntoView({ behavior:'smooth', block:'start' });
 }
 
-function changeQty(itemId, delta) {
-  if (!cart[itemId]) return;
-  cart[itemId].quantity += delta;
-  if (cart[itemId].quantity <= 0) {
-    delete cart[itemId];
-  }
-  updateCart();
+function changeQty(id, delta) {
+  if (!cart[id]) return;
+  cart[id].quantity += delta;
+  if (cart[id].quantity <= 0) delete cart[id];
+  updateAll();
+}
+
+function toggleStudent() {
+  isStudent = !isStudent;
+  document.getElementById('studentRow').classList.toggle('on', isStudent);
+  updateAll();
+}
+
+function updateAll() {
+  updateDuration();
+  renderCart();
   renderCatalog();
-}
-
-function updateCart() {
-  const days = calcDays();
-  const items = Object.values(cart);
-  
-  if (items.length === 0) {
-    document.getElementById('cartContent').innerHTML = `
-      <div class="cart-empty">
-        <div class="cart-empty-icon">🎒</div>
-        <div class="cart-empty-text">Belum ada alat dipilih.<br>Pilih dari katalog di atas!</div>
-      </div>`;
-    return;
-  }
-  
-  let subtotal = 0;
-  items.forEach(i => subtotal += i.pricePerDay * i.quantity * (days || 1));
-  const discount = isStudent ? subtotal * 0.1 : 0;
-  const total = subtotal - discount;
-  
-  document.getElementById('cartContent').innerHTML = `
-    ${items.map(i => `
-      <div class="cart-item">
-        <div class="cart-item-icon">🏕️</div>
-        <div class="cart-item-info">
-          <div class="cart-item-name">${i.itemName}</div>
-          <div class="cart-item-price">${formatRp(i.pricePerDay)}/hari × ${i.quantity}</div>
-        </div>
-        <div class="cart-qty">
-          <button class="qty-btn" onclick="changeQty('${i.itemId}',-1)">−</button>
-          <span class="qty-val">${i.quantity}</span>
-          <button class="qty-btn" onclick="changeQty('${i.itemId}',1)">+</button>
-        </div>
-      </div>`).join('')}
-    <div class="cart-summary">
-      ${days ? `<div class="summary-row"><span>Durasi</span><span>${days} hari</span></div>` : ''}
-      <div class="summary-row"><span>Subtotal</span><span>${formatRp(subtotal)}</span></div>
-      ${isStudent ? `<div class="summary-row" style="color:var(--sage)"><span>Diskon Mahasiswa 10%</span><span>−${formatRp(discount)}</span></div>` : ''}
-      <div class="summary-row total"><span>TOTAL</span><span>${formatRp(total)}</span></div>
-      ${days ? `<div class="summary-row dp"><span>DP 30%</span><span>${formatRp(Math.ceil(total*0.3))}</span></div>` : ''}
-    </div>`;
 }
 
 function calcDays() {
   if (!startDate || !endDate) return 0;
-  const diff = new Date(endDate) - new Date(startDate);
-  return Math.ceil(diff / (1000 * 60 * 60 * 24));
+  return Math.ceil((new Date(endDate) - new Date(startDate)) / 86400000);
+}
+
+function updateDuration() {
+  const d = calcDays();
+  const el = document.getElementById('durationDisplay');
+  if (!startDate || !endDate) { el.textContent = 'Pilih tanggal'; return; }
+  if (d <= 0) { el.textContent = 'Cek tanggal'; el.style.color = 'var(--danger)'; return; }
+  el.textContent = `${d} hari`;
+  el.style.color = '';
+}
+
+function renderCart() {
+  const items = Object.values(cart);
+  const days = calcDays();
+  document.getElementById('cartCount').textContent = items.reduce((s,i) => s+i.quantity, 0);
+
+  if (items.length === 0) {
+    document.getElementById('cartItems').innerHTML = `
+      <div class="cart-empty">
+        <div class="cart-empty-icon">🎒</div>
+        <div class="cart-empty-text">Belum ada alat dipilih.<br>Klik "+ Tambah" dari katalog!</div>
+      </div>`;
+    document.getElementById('cartSummary').style.display = 'none';
+    return;
+  }
+
+  document.getElementById('cartItems').innerHTML = items.map(i => {
+    const line = i.pricePerDay * i.quantity * (days || 1);
+    return `<div class="cart-item">
+      <div class="ci-info">
+        <div class="ci-name">${i.itemName}</div>
+        <div class="ci-price">${formatRp(i.pricePerDay)}/hari × ${i.quantity}</div>
+      </div>
+      <div class="qty-ctrl">
+        <button class="qty-btn" onclick="changeQty('${i.itemId}',-1)">−</button>
+        <span class="qty-num">${i.quantity}</span>
+        <button class="qty-btn" onclick="changeQty('${i.itemId}',1)">+</button>
+      </div>
+      <div class="ci-sub">${formatRp(line)}</div>
+    </div>`;
+  }).join('');
+
+  const subtotal = items.reduce((s,i) => s + i.pricePerDay * i.quantity * (days||1), 0);
+  const disc = isStudent ? subtotal * 0.1 : 0;
+  const total = subtotal - disc;
+
+  document.getElementById('cartSummary').style.display = 'block';
+  document.getElementById('sumSubtotal').textContent = formatRp(subtotal);
+
+  const durRow = document.getElementById('sumDurRow');
+  if (days > 0) { durRow.style.display='flex'; document.getElementById('sumDur').textContent = days+' hari'; }
+  else durRow.style.display='none';
+
+  const discRow = document.getElementById('sumDiscRow');
+  if (isStudent) { discRow.style.display='flex'; document.getElementById('sumDisc').textContent = '-'+formatRp(disc); }
+  else discRow.style.display='none';
+
+  document.getElementById('sumTotal').textContent = formatRp(total);
+
+  const dpBox = document.getElementById('sumDpBox');
+  if (days > 0) { dpBox.style.display='flex'; document.getElementById('sumDp').textContent = formatRp(Math.ceil(total*0.3)); }
+  else dpBox.style.display='none';
 }
 
 // ============================================================
-// SUBMIT ORDER
+// SUBMIT
 // ============================================================
 async function submitOrder() {
   const name = document.getElementById('clientName').value.trim();
-  const wa = document.getElementById('clientWA').value.trim();
-  const notes = document.getElementById('orderNotes').value.trim();
-  
-  if (!name) { showToast('Nama harus diisi!'); return; }
-  if (!wa) { showToast('Nomor WA harus diisi!'); return; }
+  const wa   = document.getElementById('clientWA').value.trim();
+  const notes= document.getElementById('orderNotes').value.trim();
+
+  if (!name)  { showToast('Nama harus diisi!'); return; }
+  if (!wa)    { showToast('Nomor WA harus diisi!'); return; }
   if (!startDate) { showToast('Tanggal ambil harus diisi!'); return; }
-  if (!endDate) { showToast('Tanggal kembali harus diisi!'); return; }
-  if (Object.keys(cart).length === 0) { showToast('Pilih minimal 1 alat!'); return; }
+  if (!endDate)   { showToast('Tanggal kembali harus diisi!'); return; }
+  if (calcDays() <= 0) { showToast('Tanggal kembali harus setelah tanggal ambil!'); return; }
+  if (Object.keys(cart).length === 0) { showToast('Pilih minimal 1 alat dulu!'); return; }
 
-  const btn = document.getElementById('submitOrder');
-  btn.textContent = '⏳ Mengirim...';
-  btn.disabled = true;
-
-  const payload = {
-    action: 'createOrder',
-    clientName: name,
-    whatsapp: wa,
-    startDate, endDate,
-    items: Object.values(cart),
-    isStudent,
-    notes
-  };
+  const btn = document.getElementById('submitBtn');
+  btn.textContent = '⏳ Mengirim...'; btn.disabled = true;
 
   try {
     const res = await fetch(API_URL, {
       method: 'POST',
-      body: JSON.stringify(payload)
+      body: JSON.stringify({ action:'createOrder', clientName:name, whatsapp:wa, startDate, endDate, items:Object.values(cart), isStudent, notes })
     });
     const data = await res.json();
-    
     if (data.success) {
-      orderResult = data;
       showSuccessModal(data);
-      cart = {};
-      updateCart();
-      renderCatalog();
-    } else {
-      showToast('Error: ' + (data.error || 'Gagal mengirim order'));
-    }
-  } catch(e) {
-    showToast('Gagal terhubung ke server. Coba lagi!');
-  } finally {
-    btn.textContent = '🚀 Kirim Booking';
-    btn.disabled = false;
-  }
+      cart = {}; updateAll();
+    } else { showToast('Error: ' + (data.error || 'Gagal')); }
+  } catch(e) { showToast('Gagal konek ke server!'); }
+  finally { btn.textContent = '🚀 KIRIM BOOKING'; btn.disabled = false; }
 }
 
 function showSuccessModal(data) {
   const s = data.summary;
   document.getElementById('modalSummary').innerHTML = `
-    <div class="order-summary-row"><span>Order ID</span><strong>${s.orderId}</strong></div>
-    <div class="order-summary-row"><span>Durasi</span><span>${s.days} hari</span></div>
-    ${s.discount > 0 ? `<div class="order-summary-row"><span>Diskon Mahasiswa</span><span>−${formatRp(s.discount)}</span></div>` : ''}
-    <div class="order-summary-row highlight"><span>TOTAL</span><span>${formatRp(s.total)}</span></div>
-    <div class="order-summary-row" style="color:var(--accent)"><span>DP 30% (sekarang)</span><span><strong>${formatRp(s.dp30)}</strong></span></div>
-    <div class="order-summary-row"><span>Pelunasan 70% (saat ambil)</span><span>${formatRp(s.pelunasan70)}</span></div>`;
-  
+    <div class="orow"><span>Order ID</span><strong>${s.orderId}</strong></div>
+    <div class="orow"><span>Durasi</span><span>${s.days} hari</span></div>
+    ${s.discount>0 ? `<div class="orow"><span>Diskon Mahasiswa</span><span>-${formatRp(s.discount)}</span></div>` : ''}
+    <div class="orow hl"><span>TOTAL</span><span>${formatRp(s.total)}</span></div>
+    <div class="orow" style="color:var(--accent)"><span>DP 30% sekarang</span><strong>${formatRp(s.dp30)}</strong></div>
+    <div class="orow"><span>Pelunasan 70% (saat ambil)</span><span>${formatRp(s.pelunasan70)}</span></div>`;
   document.getElementById('waPreview').textContent = data.waMessage;
-  
-  const waMsg = encodeURIComponent(data.waMessage);
-  document.getElementById('waConfirmBtn').href = `https://wa.me/${WA_NUMBER}?text=${waMsg}`;
-  
+  const waClean = WA_NUMBER.replace(/\D/g,'');
+  document.getElementById('waConfirmBtn').href = `https://wa.me/${waClean}?text=${encodeURIComponent(data.waMessage)}`;
   document.getElementById('successModal').classList.add('open');
 }
 
-function closeModal() {
-  document.getElementById('successModal').classList.remove('open');
-}
+function closeModal() { document.getElementById('successModal').classList.remove('open'); }
 
-// ============================================================
-// HELPERS
-// ============================================================
-function formatRp(num) {
-  return 'Rp ' + Math.round(num||0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-}
-function formatWADisplay(num) {
-  return '+' + num.replace(/(\d{2})(\d{3})(\d{4})(\d+)/, '$1 $2-$3-$4');
-}
+function formatRp(n) { return 'Rp '+Math.round(n||0).toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.'); }
 function showToast(msg) {
   const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
+  t.textContent = msg; t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 2800);
-}
-
-// Update contact dari settings
-async function loadSettings() {
-  try {
-    const res = await fetch(`${API_URL}?action=getItems`);
-  } catch(e) {}
 }
 </script>
 </body>
